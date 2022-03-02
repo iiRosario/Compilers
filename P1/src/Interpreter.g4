@@ -1,12 +1,23 @@
 grammar Interpreter;
 start :
- expression EOF
+expression+ EOF;
+
+expression:
+ INT
+ | expression (PLUS | MINUS | SLASH |STAR) expression
+ | IDENTIFICATOR
+ | COMMENT
  ;
-expression
- :
- | INT
- | expression (PLUS | MINUS) expression
- ;
+
 PLUS : '+';
 MINUS : '-';
 INT : '0'..'9'+;
+STAR : '*';
+SLASH : '/';
+
+WS : [ \r\t]+ -> skip ;
+
+
+IDENTIFICATOR : (LETRA+[0-9]* | LETRA+ | [0-9]*LETRA+)+ ;
+fragment LETRA : [a-zA-Z]|'_';
+COMMENT: '\\' ~[\n]*;
