@@ -18,6 +18,6 @@ SLASH : '/';
 WS : [ \r\t]+ -> skip ;
 
 
-IDENTIFICATOR : (LETRA+[0-9]* | LETRA+ | [0-9]*LETRA+)+ ;
+IDENTIFICATOR : ([0-9]*LETRA+[0-9]*)+ ;
 fragment LETRA : [a-zA-Z]|'_';
 COMMENT: '\\' ~[\n]*;
