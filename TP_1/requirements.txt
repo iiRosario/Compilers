@@ -1,0 +1,28 @@
+Tipos de dados básicos
+ 	- bool 
+ 	- int 
+ 	- real ( 2,31 )
+ 	- string 
+ 	- void
+
+Expressoes e operadores
+	
+	- operadores unários :
+		-
+		not
+	- operadores binarios:
+		+
+		-
+		*
+		/
+		%
+		<
+		<=
+		>
+		>=
+		==
+		!=
+		and
+		or
+		(
+		)
