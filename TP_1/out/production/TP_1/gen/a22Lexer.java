@@ -1,4 +1,4 @@
-// Generated from C:/Users/diogo/Ambiente de Trabalho/Compilers/Compilers/TP_1/src\a22Lexer.g4 by ANTLR 4.9.2
+// Generated from C:/Users/diogo/Ambiente de Trabalho/Compilers/Compilers/TP_1/out/production/TP_1\a22Lexer.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

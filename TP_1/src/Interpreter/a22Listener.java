@@ -8,731 +8,531 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface a22Listener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link a22#programa}.
+	 * Enter a parse tree produced by {@link a22#start}.
 	 * @param ctx the parse tree
 	 */
-	void enterPrograma(a22.ProgramaContext ctx);
+	void enterStart(a22.StartContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#programa}.
+	 * Exit a parse tree produced by {@link a22#start}.
 	 * @param ctx the parse tree
 	 */
-	void exitPrograma(a22.ProgramaContext ctx);
+	void exitStart(a22.StartContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#binaries_op}.
+	 * Enter a parse tree produced by {@link a22#file}.
 	 * @param ctx the parse tree
 	 */
-	void enterBinaries_op(a22.Binaries_opContext ctx);
+	void enterFile(a22.FileContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#binaries_op}.
+	 * Exit a parse tree produced by {@link a22#file}.
 	 * @param ctx the parse tree
 	 */
-	void exitBinaries_op(a22.Binaries_opContext ctx);
+	void exitFile(a22.FileContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#unary_op}.
+	 * Enter a parse tree produced by {@link a22#variable}.
 	 * @param ctx the parse tree
 	 */
-	void enterUnary_op(a22.Unary_opContext ctx);
+	void enterVariable(a22.VariableContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#unary_op}.
+	 * Exit a parse tree produced by {@link a22#variable}.
 	 * @param ctx the parse tree
 	 */
-	void exitUnary_op(a22.Unary_opContext ctx);
+	void exitVariable(a22.VariableContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#voidd}.
+	 * Enter a parse tree produced by {@link a22#variable_declaration}.
 	 * @param ctx the parse tree
 	 */
-	void enterVoidd(a22.VoiddContext ctx);
+	void enterVariable_declaration(a22.Variable_declarationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#voidd}.
+	 * Exit a parse tree produced by {@link a22#variable_declaration}.
 	 * @param ctx the parse tree
 	 */
-	void exitVoidd(a22.VoiddContext ctx);
+	void exitVariable_declaration(a22.Variable_declarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#declaracoes}.
+	 * Enter a parse tree produced by {@link a22#brackets}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracoes(a22.DeclaracoesContext ctx);
+	void enterBrackets(a22.BracketsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#declaracoes}.
+	 * Exit a parse tree produced by {@link a22#brackets}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracoes(a22.DeclaracoesContext ctx);
+	void exitBrackets(a22.BracketsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#declaracao}.
+	 * Enter a parse tree produced by {@link a22#variable_initialization}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracao(a22.DeclaracaoContext ctx);
+	void enterVariable_initialization(a22.Variable_initializationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#declaracao}.
+	 * Exit a parse tree produced by {@link a22#variable_initialization}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracao(a22.DeclaracaoContext ctx);
+	void exitVariable_initialization(a22.Variable_initializationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#declaracao_variavel}.
+	 * Enter a parse tree produced by {@link a22#primitive_data_type}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracao_variavel(a22.Declaracao_variavelContext ctx);
+	void enterPrimitive_data_type(a22.Primitive_data_typeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#declaracao_variavel}.
+	 * Exit a parse tree produced by {@link a22#primitive_data_type}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracao_variavel(a22.Declaracao_variavelContext ctx);
+	void exitPrimitive_data_type(a22.Primitive_data_typeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#pointer_types}.
+	 * Enter a parse tree produced by {@link a22#composite_data_type_def}.
 	 * @param ctx the parse tree
 	 */
-	void enterPointer_types(a22.Pointer_typesContext ctx);
+	void enterComposite_data_type_def(a22.Composite_data_type_defContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#pointer_types}.
+	 * Exit a parse tree produced by {@link a22#composite_data_type_def}.
 	 * @param ctx the parse tree
 	 */
-	void exitPointer_types(a22.Pointer_typesContext ctx);
+	void exitComposite_data_type_def(a22.Composite_data_type_defContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#declaracao_variavel_simples}.
+	 * Enter a parse tree produced by the {@code int_literal}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracao_variavel_simples(a22.Declaracao_variavel_simplesContext ctx);
+	void enterInt_literal(a22.Int_literalContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#declaracao_variavel_simples}.
+	 * Exit a parse tree produced by the {@code int_literal}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracao_variavel_simples(a22.Declaracao_variavel_simplesContext ctx);
+	void exitInt_literal(a22.Int_literalContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#declaracao_variavel_inicializacao}.
+	 * Enter a parse tree produced by the {@code real_literal}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracao_variavel_inicializacao(a22.Declaracao_variavel_inicializacaoContext ctx);
+	void enterReal_literal(a22.Real_literalContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#declaracao_variavel_inicializacao}.
+	 * Exit a parse tree produced by the {@code real_literal}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracao_variavel_inicializacao(a22.Declaracao_variavel_inicializacaoContext ctx);
+	void exitReal_literal(a22.Real_literalContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_binarias}.
+	 * Enter a parse tree produced by the {@code string_literal}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_binarias(a22.Exp_binariasContext ctx);
+	void enterString_literal(a22.String_literalContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_binarias}.
+	 * Exit a parse tree produced by the {@code string_literal}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_binarias(a22.Exp_binariasContext ctx);
+	void exitString_literal(a22.String_literalContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_unario}.
+	 * Enter a parse tree produced by the {@code true}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_unario(a22.Exp_unarioContext ctx);
+	void enterTrue(a22.TrueContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_unario}.
+	 * Exit a parse tree produced by the {@code true}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_unario(a22.Exp_unarioContext ctx);
+	void exitTrue(a22.TrueContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_number}.
+	 * Enter a parse tree produced by the {@code false}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_number(a22.Exp_numberContext ctx);
+	void enterFalse(a22.FalseContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_number}.
+	 * Exit a parse tree produced by the {@code false}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_number(a22.Exp_numberContext ctx);
+	void exitFalse(a22.FalseContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_qualquer}.
+	 * Enter a parse tree produced by the {@code identifier}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_qualquer(a22.Exp_qualquerContext ctx);
+	void enterIdentifier(a22.IdentifierContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_qualquer}.
+	 * Exit a parse tree produced by the {@code identifier}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_qualquer(a22.Exp_qualquerContext ctx);
+	void exitIdentifier(a22.IdentifierContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_parenteses}.
+	 * Enter a parse tree produced by the {@code fun_call}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_parenteses(a22.Exp_parentesesContext ctx);
+	void enterFun_call(a22.Fun_callContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_parenteses}.
+	 * Exit a parse tree produced by the {@code fun_call}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_parenteses(a22.Exp_parentesesContext ctx);
+	void exitFun_call(a22.Fun_callContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_indexacao_de_ponteiro}.
+	 * Enter a parse tree produced by the {@code simple_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_indexacao_de_ponteiro(a22.Exp_indexacao_de_ponteiroContext ctx);
+	void enterSimple_exp(a22.Simple_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_indexacao_de_ponteiro}.
+	 * Exit a parse tree produced by the {@code simple_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_indexacao_de_ponteiro(a22.Exp_indexacao_de_ponteiroContext ctx);
+	void exitSimple_exp(a22.Simple_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_md}.
+	 * Enter a parse tree produced by the {@code pm_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_md(a22.Exp_mdContext ctx);
+	void enterPm_exp(a22.Pm_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_md}.
+	 * Exit a parse tree produced by the {@code pm_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_md(a22.Exp_mdContext ctx);
+	void exitPm_exp(a22.Pm_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_ss}.
+	 * Enter a parse tree produced by the {@code equal_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_ss(a22.Exp_ssContext ctx);
+	void enterEqual_exp(a22.Equal_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_ss}.
+	 * Exit a parse tree produced by the {@code equal_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_ss(a22.Exp_ssContext ctx);
+	void exitEqual_exp(a22.Equal_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_comparadores}.
+	 * Enter a parse tree produced by the {@code index_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_comparadores(a22.Exp_comparadoresContext ctx);
+	void enterIndex_exp(a22.Index_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_comparadores}.
+	 * Exit a parse tree produced by the {@code index_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_comparadores(a22.Exp_comparadoresContext ctx);
+	void exitIndex_exp(a22.Index_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_elogico}.
+	 * Enter a parse tree produced by the {@code paren_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_elogico(a22.Exp_elogicoContext ctx);
+	void enterParen_exp(a22.Paren_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_elogico}.
+	 * Exit a parse tree produced by the {@code paren_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_elogico(a22.Exp_elogicoContext ctx);
+	void exitParen_exp(a22.Paren_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#exp_ologico}.
+	 * Enter a parse tree produced by the {@code member_acc_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExp_ologico(a22.Exp_ologicoContext ctx);
+	void enterMember_acc_exp(a22.Member_acc_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#exp_ologico}.
+	 * Exit a parse tree produced by the {@code member_acc_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExp_ologico(a22.Exp_ologicoContext ctx);
+	void exitMember_acc_exp(a22.Member_acc_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#op_indexacao_de_ponteiro}.
+	 * Enter a parse tree produced by the {@code llgg_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_indexacao_de_ponteiro(a22.Op_indexacao_de_ponteiroContext ctx);
+	void enterLlgg_exp(a22.Llgg_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#op_indexacao_de_ponteiro}.
+	 * Exit a parse tree produced by the {@code llgg_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_indexacao_de_ponteiro(a22.Op_indexacao_de_ponteiroContext ctx);
+	void exitLlgg_exp(a22.Llgg_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#op_isne}.
+	 * Enter a parse tree produced by the {@code negation_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_isne(a22.Op_isneContext ctx);
+	void enterNegation_exp(a22.Negation_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#op_isne}.
+	 * Exit a parse tree produced by the {@code negation_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_isne(a22.Op_isneContext ctx);
+	void exitNegation_exp(a22.Negation_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#op_comparadores}.
+	 * Enter a parse tree produced by the {@code mdr_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_comparadores(a22.Op_comparadoresContext ctx);
+	void enterMdr_exp(a22.Mdr_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#op_comparadores}.
+	 * Exit a parse tree produced by the {@code mdr_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_comparadores(a22.Op_comparadoresContext ctx);
+	void exitMdr_exp(a22.Mdr_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#op_elogico}.
+	 * Enter a parse tree produced by the {@code and_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_elogico(a22.Op_elogicoContext ctx);
+	void enterAnd_exp(a22.And_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#op_elogico}.
+	 * Exit a parse tree produced by the {@code and_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_elogico(a22.Op_elogicoContext ctx);
+	void exitAnd_exp(a22.And_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link a22#op_ologico}.
+	 * Enter a parse tree produced by the {@code or_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_ologico(a22.Op_ologicoContext ctx);
+	void enterOr_exp(a22.Or_expContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link a22#op_ologico}.
+	 * Exit a parse tree produced by the {@code or_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_ologico(a22.Op_ologicoContext ctx);
+	void exitOr_exp(a22.Or_expContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Op_soma_label_unique}
-	 * labeled alternative in {@link a22#op_soma}.
+	 * Enter a parse tree produced by {@link a22#function_def}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_soma_label_unique(a22.Op_soma_label_uniqueContext ctx);
+	void enterFunction_def(a22.Function_defContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Op_soma_label_unique}
-	 * labeled alternative in {@link a22#op_soma}.
+	 * Exit a parse tree produced by {@link a22#function_def}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_soma_label_unique(a22.Op_soma_label_uniqueContext ctx);
+	void exitFunction_def(a22.Function_defContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Op_subtrair_label_unique}
-	 * labeled alternative in {@link a22#op_subtrair}.
+	 * Enter a parse tree produced by {@link a22#function_def_args}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_subtrair_label_unique(a22.Op_subtrair_label_uniqueContext ctx);
+	void enterFunction_def_args(a22.Function_def_argsContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Op_subtrair_label_unique}
-	 * labeled alternative in {@link a22#op_subtrair}.
+	 * Exit a parse tree produced by {@link a22#function_def_args}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_subtrair_label_unique(a22.Op_subtrair_label_uniqueContext ctx);
+	void exitFunction_def_args(a22.Function_def_argsContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Op_dividir_label_unique}
-	 * labeled alternative in {@link a22#op_dividir}.
+	 * Enter a parse tree produced by {@link a22#function_def_args_types}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_dividir_label_unique(a22.Op_dividir_label_uniqueContext ctx);
+	void enterFunction_def_args_types(a22.Function_def_args_typesContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Op_dividir_label_unique}
-	 * labeled alternative in {@link a22#op_dividir}.
+	 * Exit a parse tree produced by {@link a22#function_def_args_types}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_dividir_label_unique(a22.Op_dividir_label_uniqueContext ctx);
+	void exitFunction_def_args_types(a22.Function_def_args_typesContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Op_multiplicar_label_unique}
-	 * labeled alternative in {@link a22#op_multiplicar}.
+	 * Enter a parse tree produced by the {@code normal_fun_call}
+	 * labeled alternative in {@link a22#function_call}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_multiplicar_label_unique(a22.Op_multiplicar_label_uniqueContext ctx);
+	void enterNormal_fun_call(a22.Normal_fun_callContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Op_multiplicar_label_unique}
-	 * labeled alternative in {@link a22#op_multiplicar}.
+	 * Exit a parse tree produced by the {@code normal_fun_call}
+	 * labeled alternative in {@link a22#function_call}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_multiplicar_label_unique(a22.Op_multiplicar_label_uniqueContext ctx);
+	void exitNormal_fun_call(a22.Normal_fun_callContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Op_resto_label_unique}
-	 * labeled alternative in {@link a22#op_resto}.
+	 * Enter a parse tree produced by the {@code write_fun_call}
+	 * labeled alternative in {@link a22#function_call}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_resto_label_unique(a22.Op_resto_label_uniqueContext ctx);
+	void enterWrite_fun_call(a22.Write_fun_callContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Op_resto_label_unique}
-	 * labeled alternative in {@link a22#op_resto}.
+	 * Exit a parse tree produced by the {@code write_fun_call}
+	 * labeled alternative in {@link a22#function_call}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_resto_label_unique(a22.Op_resto_label_uniqueContext ctx);
+	void exitWrite_fun_call(a22.Write_fun_callContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Arg_funcao_label}
-	 * labeled alternative in {@link a22#argumento_funcao}.
+	 * Enter a parse tree produced by the {@code read_fun_call}
+	 * labeled alternative in {@link a22#function_call}.
 	 * @param ctx the parse tree
 	 */
-	void enterArg_funcao_label(a22.Arg_funcao_labelContext ctx);
+	void enterRead_fun_call(a22.Read_fun_callContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Arg_funcao_label}
-	 * labeled alternative in {@link a22#argumento_funcao}.
+	 * Exit a parse tree produced by the {@code read_fun_call}
+	 * labeled alternative in {@link a22#function_call}.
 	 * @param ctx the parse tree
 	 */
-	void exitArg_funcao_label(a22.Arg_funcao_labelContext ctx);
+	void exitRead_fun_call(a22.Read_fun_callContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Arg_funcao_pointers_label}
-	 * labeled alternative in {@link a22#argumento_funcao}.
+	 * Enter a parse tree produced by {@link a22#function_call_args}.
 	 * @param ctx the parse tree
 	 */
-	void enterArg_funcao_pointers_label(a22.Arg_funcao_pointers_labelContext ctx);
+	void enterFunction_call_args(a22.Function_call_argsContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Arg_funcao_pointers_label}
-	 * labeled alternative in {@link a22#argumento_funcao}.
+	 * Exit a parse tree produced by {@link a22#function_call_args}.
 	 * @param ctx the parse tree
 	 */
-	void exitArg_funcao_pointers_label(a22.Arg_funcao_pointers_labelContext ctx);
+	void exitFunction_call_args(a22.Function_call_argsContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Args_funcao_label}
-	 * labeled alternative in {@link a22#argumentos_funcao}.
+	 * Enter a parse tree produced by the {@code assignment_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterArgs_funcao_label(a22.Args_funcao_labelContext ctx);
+	void enterAssignment_state(a22.Assignment_stateContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Args_funcao_label}
-	 * labeled alternative in {@link a22#argumentos_funcao}.
+	 * Exit a parse tree produced by the {@code assignment_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitArgs_funcao_label(a22.Args_funcao_labelContext ctx);
+	void exitAssignment_state(a22.Assignment_stateContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Declaracao_funcao_void_label}
-	 * labeled alternative in {@link a22#declaracao_funcao_void}.
+	 * Enter a parse tree produced by the {@code conditional_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracao_funcao_void_label(a22.Declaracao_funcao_void_labelContext ctx);
+	void enterConditional_state(a22.Conditional_stateContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Declaracao_funcao_void_label}
-	 * labeled alternative in {@link a22#declaracao_funcao_void}.
+	 * Exit a parse tree produced by the {@code conditional_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracao_funcao_void_label(a22.Declaracao_funcao_void_labelContext ctx);
+	void exitConditional_state(a22.Conditional_stateContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Declaracao_funcao_label}
-	 * labeled alternative in {@link a22#declaracao_funcao}.
+	 * Enter a parse tree produced by the {@code while_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracao_funcao_label(a22.Declaracao_funcao_labelContext ctx);
+	void enterWhile_state(a22.While_stateContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Declaracao_funcao_label}
-	 * labeled alternative in {@link a22#declaracao_funcao}.
+	 * Exit a parse tree produced by the {@code while_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracao_funcao_label(a22.Declaracao_funcao_labelContext ctx);
+	void exitWhile_state(a22.While_stateContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Bloco_label}
-	 * labeled alternative in {@link a22#bloco}.
+	 * Enter a parse tree produced by the {@code for_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterBloco_label(a22.Bloco_labelContext ctx);
+	void enterFor_state(a22.For_stateContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Bloco_label}
-	 * labeled alternative in {@link a22#bloco}.
+	 * Exit a parse tree produced by the {@code for_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitBloco_label(a22.Bloco_labelContext ctx);
+	void exitFor_state(a22.For_stateContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Leave_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Enter a parse tree produced by the {@code control_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterLeave_label(a22.Leave_labelContext ctx);
+	void enterControl_state(a22.Control_stateContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Leave_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Exit a parse tree produced by the {@code control_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitLeave_label(a22.Leave_labelContext ctx);
+	void exitControl_state(a22.Control_stateContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Restart_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Enter a parse tree produced by the {@code expression_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterRestart_label(a22.Restart_labelContext ctx);
+	void enterExpression_state(a22.Expression_stateContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Restart_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Exit a parse tree produced by the {@code expression_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitRestart_label(a22.Restart_labelContext ctx);
+	void exitExpression_state(a22.Expression_stateContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Return_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Enter a parse tree produced by the {@code block_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterReturn_label(a22.Return_labelContext ctx);
+	void enterBlock_state(a22.Block_stateContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Return_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Exit a parse tree produced by the {@code block_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitReturn_label(a22.Return_labelContext ctx);
+	void exitBlock_state(a22.Block_stateContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code InstCont_Return_exp_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Enter a parse tree produced by the {@code semicolon_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstCont_Return_exp_label(a22.InstCont_Return_exp_labelContext ctx);
+	void enterSemicolon_state(a22.Semicolon_stateContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code InstCont_Return_exp_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Exit a parse tree produced by the {@code semicolon_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstCont_Return_exp_label(a22.InstCont_Return_exp_labelContext ctx);
+	void exitSemicolon_state(a22.Semicolon_stateContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Atribuicao_label}
-	 * labeled alternative in {@link a22#atribuicao}.
+	 * Enter a parse tree produced by {@link a22#assignment}.
 	 * @param ctx the parse tree
 	 */
-	void enterAtribuicao_label(a22.Atribuicao_labelContext ctx);
+	void enterAssignment(a22.AssignmentContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Atribuicao_label}
-	 * labeled alternative in {@link a22#atribuicao}.
+	 * Exit a parse tree produced by {@link a22#assignment}.
 	 * @param ctx the parse tree
 	 */
-	void exitAtribuicao_label(a22.Atribuicao_labelContext ctx);
+	void exitAssignment(a22.AssignmentContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Instrucao_condicional_label}
-	 * labeled alternative in {@link a22#instrucao_condicional}.
+	 * Enter a parse tree produced by {@link a22#conditional}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstrucao_condicional_label(a22.Instrucao_condicional_labelContext ctx);
+	void enterConditional(a22.ConditionalContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Instrucao_condicional_label}
-	 * labeled alternative in {@link a22#instrucao_condicional}.
+	 * Exit a parse tree produced by {@link a22#conditional}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstrucao_condicional_label(a22.Instrucao_condicional_labelContext ctx);
+	void exitConditional(a22.ConditionalContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Ciclo_label}
-	 * labeled alternative in {@link a22#ciclo}.
+	 * Enter a parse tree produced by {@link a22#while_loop}.
 	 * @param ctx the parse tree
 	 */
-	void enterCiclo_label(a22.Ciclo_labelContext ctx);
+	void enterWhile_loop(a22.While_loopContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Ciclo_label}
-	 * labeled alternative in {@link a22#ciclo}.
+	 * Exit a parse tree produced by {@link a22#while_loop}.
 	 * @param ctx the parse tree
 	 */
-	void exitCiclo_label(a22.Ciclo_labelContext ctx);
+	void exitWhile_loop(a22.While_loopContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Subbloco_label}
-	 * labeled alternative in {@link a22#subbloco}.
+	 * Enter a parse tree produced by {@link a22#for_loop}.
 	 * @param ctx the parse tree
 	 */
-	void enterSubbloco_label(a22.Subbloco_labelContext ctx);
+	void enterFor_loop(a22.For_loopContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Subbloco_label}
-	 * labeled alternative in {@link a22#subbloco}.
+	 * Exit a parse tree produced by {@link a22#for_loop}.
 	 * @param ctx the parse tree
 	 */
-	void exitSubbloco_label(a22.Subbloco_labelContext ctx);
+	void exitFor_loop(a22.For_loopContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Prologo_label}
-	 * labeled alternative in {@link a22#prologo}.
+	 * Enter a parse tree produced by {@link a22#control}.
 	 * @param ctx the parse tree
 	 */
-	void enterPrologo_label(a22.Prologo_labelContext ctx);
+	void enterControl(a22.ControlContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Prologo_label}
-	 * labeled alternative in {@link a22#prologo}.
+	 * Exit a parse tree produced by {@link a22#control}.
 	 * @param ctx the parse tree
 	 */
-	void exitPrologo_label(a22.Prologo_labelContext ctx);
+	void exitControl(a22.ControlContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Epilogo_label}
-	 * labeled alternative in {@link a22#epilogo}.
+	 * Enter a parse tree produced by {@link a22#block_statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterEpilogo_label(a22.Epilogo_labelContext ctx);
+	void enterBlock_statement(a22.Block_statementContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Epilogo_label}
-	 * labeled alternative in {@link a22#epilogo}.
+	 * Exit a parse tree produced by {@link a22#block_statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitEpilogo_label(a22.Epilogo_labelContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Instrucoes_exp_qualquer}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void enterInstrucoes_exp_qualquer(a22.Instrucoes_exp_qualquerContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Instrucoes_exp_qualquer}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void exitInstrucoes_exp_qualquer(a22.Instrucoes_exp_qualquerContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Instrucoes_instrucoes_controle}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void enterInstrucoes_instrucoes_controle(a22.Instrucoes_instrucoes_controleContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Instrucoes_instrucoes_controle}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void exitInstrucoes_instrucoes_controle(a22.Instrucoes_instrucoes_controleContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Instrucoes_atribuicao}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void enterInstrucoes_atribuicao(a22.Instrucoes_atribuicaoContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Instrucoes_atribuicao}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void exitInstrucoes_atribuicao(a22.Instrucoes_atribuicaoContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Instrucoes_instrucao_condicional}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void enterInstrucoes_instrucao_condicional(a22.Instrucoes_instrucao_condicionalContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Instrucoes_instrucao_condicional}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void exitInstrucoes_instrucao_condicional(a22.Instrucoes_instrucao_condicionalContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Instrucoes_ciclo}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void enterInstrucoes_ciclo(a22.Instrucoes_cicloContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Instrucoes_ciclo}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void exitInstrucoes_ciclo(a22.Instrucoes_cicloContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Instrucoes_subbloco}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void enterInstrucoes_subbloco(a22.Instrucoes_subblocoContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Instrucoes_subbloco}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 */
-	void exitInstrucoes_subbloco(a22.Instrucoes_subblocoContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Return_exp_label}
-	 * labeled alternative in {@link a22#return_exp}.
-	 * @param ctx the parse tree
-	 */
-	void enterReturn_exp_label(a22.Return_exp_labelContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Return_exp_label}
-	 * labeled alternative in {@link a22#return_exp}.
-	 * @param ctx the parse tree
-	 */
-	void exitReturn_exp_label(a22.Return_exp_labelContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code InvFunc_invocao_funcao}
-	 * labeled alternative in {@link a22#invocacao_funcoes}.
-	 * @param ctx the parse tree
-	 */
-	void enterInvFunc_invocao_funcao(a22.InvFunc_invocao_funcaoContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code InvFunc_invocao_funcao}
-	 * labeled alternative in {@link a22#invocacao_funcoes}.
-	 * @param ctx the parse tree
-	 */
-	void exitInvFunc_invocao_funcao(a22.InvFunc_invocao_funcaoContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code InvFunc_funcao_especial}
-	 * labeled alternative in {@link a22#invocacao_funcoes}.
-	 * @param ctx the parse tree
-	 */
-	void enterInvFunc_funcao_especial(a22.InvFunc_funcao_especialContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code InvFunc_funcao_especial}
-	 * labeled alternative in {@link a22#invocacao_funcoes}.
-	 * @param ctx the parse tree
-	 */
-	void exitInvFunc_funcao_especial(a22.InvFunc_funcao_especialContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Invocacao_funcao_label}
-	 * labeled alternative in {@link a22#invocacao_funcao}.
-	 * @param ctx the parse tree
-	 */
-	void enterInvocacao_funcao_label(a22.Invocacao_funcao_labelContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Invocacao_funcao_label}
-	 * labeled alternative in {@link a22#invocacao_funcao}.
-	 * @param ctx the parse tree
-	 */
-	void exitInvocacao_funcao_label(a22.Invocacao_funcao_labelContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code InvFuncEspecial_arroba}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 */
-	void enterInvFuncEspecial_arroba(a22.InvFuncEspecial_arrobaContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code InvFuncEspecial_arroba}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 */
-	void exitInvFuncEspecial_arroba(a22.InvFuncEspecial_arrobaContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code InvFuncEspecial_sizeof}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 */
-	void enterInvFuncEspecial_sizeof(a22.InvFuncEspecial_sizeofContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code InvFuncEspecial_sizeof}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 */
-	void exitInvFuncEspecial_sizeof(a22.InvFuncEspecial_sizeofContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code InvFuncEspecial_write}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 */
-	void enterInvFuncEspecial_write(a22.InvFuncEspecial_writeContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code InvFuncEspecial_write}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 */
-	void exitInvFuncEspecial_write(a22.InvFuncEspecial_writeContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code InvFuncEspecial_writeln}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 */
-	void enterInvFuncEspecial_writeln(a22.InvFuncEspecial_writelnContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code InvFuncEspecial_writeln}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 */
-	void exitInvFuncEspecial_writeln(a22.InvFuncEspecial_writelnContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Arroba_label}
-	 * labeled alternative in {@link a22#arroba}.
-	 * @param ctx the parse tree
-	 */
-	void enterArroba_label(a22.Arroba_labelContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Arroba_label}
-	 * labeled alternative in {@link a22#arroba}.
-	 * @param ctx the parse tree
-	 */
-	void exitArroba_label(a22.Arroba_labelContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Sizeof_label}
-	 * labeled alternative in {@link a22#sizeof}.
-	 * @param ctx the parse tree
-	 */
-	void enterSizeof_label(a22.Sizeof_labelContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Sizeof_label}
-	 * labeled alternative in {@link a22#sizeof}.
-	 * @param ctx the parse tree
-	 */
-	void exitSizeof_label(a22.Sizeof_labelContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Write_label}
-	 * labeled alternative in {@link a22#write}.
-	 * @param ctx the parse tree
-	 */
-	void enterWrite_label(a22.Write_labelContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Write_label}
-	 * labeled alternative in {@link a22#write}.
-	 * @param ctx the parse tree
-	 */
-	void exitWrite_label(a22.Write_labelContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Writeln_label}
-	 * labeled alternative in {@link a22#writeln}.
-	 * @param ctx the parse tree
-	 */
-	void enterWriteln_label(a22.Writeln_labelContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Writeln_label}
-	 * labeled alternative in {@link a22#writeln}.
-	 * @param ctx the parse tree
-	 */
-	void exitWriteln_label(a22.Writeln_labelContext ctx);
+	void exitBlock_statement(a22.Block_statementContext ctx);
 }

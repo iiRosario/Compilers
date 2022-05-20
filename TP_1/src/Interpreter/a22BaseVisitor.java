@@ -17,453 +17,327 @@ public class a22BaseVisitor<T> extends AbstractParseTreeVisitor<T> implements a2
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPrograma(a22.ProgramaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitStart(a22.StartContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBinaries_op(a22.Binaries_opContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFile(a22.FileContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitUnary_op(a22.Unary_opContext ctx) { return visitChildren(ctx); }
+	@Override public T visitVariable(a22.VariableContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVoidd(a22.VoiddContext ctx) { return visitChildren(ctx); }
+	@Override public T visitVariable_declaration(a22.Variable_declarationContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDeclaracoes(a22.DeclaracoesContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBrackets(a22.BracketsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDeclaracao(a22.DeclaracaoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitVariable_initialization(a22.Variable_initializationContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDeclaracao_variavel(a22.Declaracao_variavelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPrimitive_data_type(a22.Primitive_data_typeContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPointer_types(a22.Pointer_typesContext ctx) { return visitChildren(ctx); }
+	@Override public T visitComposite_data_type_def(a22.Composite_data_type_defContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDeclaracao_variavel_simples(a22.Declaracao_variavel_simplesContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInt_literal(a22.Int_literalContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDeclaracao_variavel_inicializacao(a22.Declaracao_variavel_inicializacaoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitReal_literal(a22.Real_literalContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_binarias(a22.Exp_binariasContext ctx) { return visitChildren(ctx); }
+	@Override public T visitString_literal(a22.String_literalContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_unario(a22.Exp_unarioContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTrue(a22.TrueContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_number(a22.Exp_numberContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFalse(a22.FalseContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_qualquer(a22.Exp_qualquerContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIdentifier(a22.IdentifierContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_parenteses(a22.Exp_parentesesContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFun_call(a22.Fun_callContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_indexacao_de_ponteiro(a22.Exp_indexacao_de_ponteiroContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSimple_exp(a22.Simple_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_md(a22.Exp_mdContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPm_exp(a22.Pm_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_ss(a22.Exp_ssContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEqual_exp(a22.Equal_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_comparadores(a22.Exp_comparadoresContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIndex_exp(a22.Index_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_elogico(a22.Exp_elogicoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitParen_exp(a22.Paren_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp_ologico(a22.Exp_ologicoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMember_acc_exp(a22.Member_acc_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_indexacao_de_ponteiro(a22.Op_indexacao_de_ponteiroContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLlgg_exp(a22.Llgg_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_isne(a22.Op_isneContext ctx) { return visitChildren(ctx); }
+	@Override public T visitNegation_exp(a22.Negation_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_comparadores(a22.Op_comparadoresContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMdr_exp(a22.Mdr_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_elogico(a22.Op_elogicoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAnd_exp(a22.And_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_ologico(a22.Op_ologicoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOr_exp(a22.Or_expContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_soma_label_unique(a22.Op_soma_label_uniqueContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunction_def(a22.Function_defContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_subtrair_label_unique(a22.Op_subtrair_label_uniqueContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunction_def_args(a22.Function_def_argsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_dividir_label_unique(a22.Op_dividir_label_uniqueContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunction_def_args_types(a22.Function_def_args_typesContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_multiplicar_label_unique(a22.Op_multiplicar_label_uniqueContext ctx) { return visitChildren(ctx); }
+	@Override public T visitNormal_fun_call(a22.Normal_fun_callContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_resto_label_unique(a22.Op_resto_label_uniqueContext ctx) { return visitChildren(ctx); }
+	@Override public T visitWrite_fun_call(a22.Write_fun_callContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitArg_funcao_label(a22.Arg_funcao_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitRead_fun_call(a22.Read_fun_callContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitArg_funcao_pointers_label(a22.Arg_funcao_pointers_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunction_call_args(a22.Function_call_argsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitArgs_funcao_label(a22.Args_funcao_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAssignment_state(a22.Assignment_stateContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDeclaracao_funcao_void_label(a22.Declaracao_funcao_void_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitConditional_state(a22.Conditional_stateContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDeclaracao_funcao_label(a22.Declaracao_funcao_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitWhile_state(a22.While_stateContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBloco_label(a22.Bloco_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFor_state(a22.For_stateContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLeave_label(a22.Leave_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitControl_state(a22.Control_stateContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitRestart_label(a22.Restart_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpression_state(a22.Expression_stateContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitReturn_label(a22.Return_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBlock_state(a22.Block_stateContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInstCont_Return_exp_label(a22.InstCont_Return_exp_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSemicolon_state(a22.Semicolon_stateContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAtribuicao_label(a22.Atribuicao_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAssignment(a22.AssignmentContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInstrucao_condicional_label(a22.Instrucao_condicional_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitConditional(a22.ConditionalContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCiclo_label(a22.Ciclo_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitWhile_loop(a22.While_loopContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSubbloco_label(a22.Subbloco_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFor_loop(a22.For_loopContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPrologo_label(a22.Prologo_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitControl(a22.ControlContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitEpilogo_label(a22.Epilogo_labelContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInstrucoes_exp_qualquer(a22.Instrucoes_exp_qualquerContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInstrucoes_instrucoes_controle(a22.Instrucoes_instrucoes_controleContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInstrucoes_atribuicao(a22.Instrucoes_atribuicaoContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInstrucoes_instrucao_condicional(a22.Instrucoes_instrucao_condicionalContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInstrucoes_ciclo(a22.Instrucoes_cicloContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInstrucoes_subbloco(a22.Instrucoes_subblocoContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitReturn_exp_label(a22.Return_exp_labelContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInvFunc_invocao_funcao(a22.InvFunc_invocao_funcaoContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInvFunc_funcao_especial(a22.InvFunc_funcao_especialContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInvocacao_funcao_label(a22.Invocacao_funcao_labelContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInvFuncEspecial_arroba(a22.InvFuncEspecial_arrobaContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInvFuncEspecial_sizeof(a22.InvFuncEspecial_sizeofContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInvFuncEspecial_write(a22.InvFuncEspecial_writeContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitInvFuncEspecial_writeln(a22.InvFuncEspecial_writelnContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitArroba_label(a22.Arroba_labelContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitSizeof_label(a22.Sizeof_labelContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitWrite_label(a22.Write_labelContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitWriteln_label(a22.Writeln_labelContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBlock_statement(a22.Block_statementContext ctx) { return visitChildren(ctx); }
 }

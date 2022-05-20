@@ -16,781 +16,565 @@ public class a22BaseListener implements a22Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrograma(a22.ProgramaContext ctx) { }
+	@Override public void enterStart(a22.StartContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrograma(a22.ProgramaContext ctx) { }
+	@Override public void exitStart(a22.StartContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBinaries_op(a22.Binaries_opContext ctx) { }
+	@Override public void enterFile(a22.FileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBinaries_op(a22.Binaries_opContext ctx) { }
+	@Override public void exitFile(a22.FileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnary_op(a22.Unary_opContext ctx) { }
+	@Override public void enterVariable(a22.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnary_op(a22.Unary_opContext ctx) { }
+	@Override public void exitVariable(a22.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVoidd(a22.VoiddContext ctx) { }
+	@Override public void enterVariable_declaration(a22.Variable_declarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVoidd(a22.VoiddContext ctx) { }
+	@Override public void exitVariable_declaration(a22.Variable_declarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracoes(a22.DeclaracoesContext ctx) { }
+	@Override public void enterBrackets(a22.BracketsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracoes(a22.DeclaracoesContext ctx) { }
+	@Override public void exitBrackets(a22.BracketsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracao(a22.DeclaracaoContext ctx) { }
+	@Override public void enterVariable_initialization(a22.Variable_initializationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracao(a22.DeclaracaoContext ctx) { }
+	@Override public void exitVariable_initialization(a22.Variable_initializationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracao_variavel(a22.Declaracao_variavelContext ctx) { }
+	@Override public void enterPrimitive_data_type(a22.Primitive_data_typeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracao_variavel(a22.Declaracao_variavelContext ctx) { }
+	@Override public void exitPrimitive_data_type(a22.Primitive_data_typeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPointer_types(a22.Pointer_typesContext ctx) { }
+	@Override public void enterComposite_data_type_def(a22.Composite_data_type_defContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPointer_types(a22.Pointer_typesContext ctx) { }
+	@Override public void exitComposite_data_type_def(a22.Composite_data_type_defContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracao_variavel_simples(a22.Declaracao_variavel_simplesContext ctx) { }
+	@Override public void enterInt_literal(a22.Int_literalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracao_variavel_simples(a22.Declaracao_variavel_simplesContext ctx) { }
+	@Override public void exitInt_literal(a22.Int_literalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracao_variavel_inicializacao(a22.Declaracao_variavel_inicializacaoContext ctx) { }
+	@Override public void enterReal_literal(a22.Real_literalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracao_variavel_inicializacao(a22.Declaracao_variavel_inicializacaoContext ctx) { }
+	@Override public void exitReal_literal(a22.Real_literalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_binarias(a22.Exp_binariasContext ctx) { }
+	@Override public void enterString_literal(a22.String_literalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_binarias(a22.Exp_binariasContext ctx) { }
+	@Override public void exitString_literal(a22.String_literalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_unario(a22.Exp_unarioContext ctx) { }
+	@Override public void enterTrue(a22.TrueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_unario(a22.Exp_unarioContext ctx) { }
+	@Override public void exitTrue(a22.TrueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_number(a22.Exp_numberContext ctx) { }
+	@Override public void enterFalse(a22.FalseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_number(a22.Exp_numberContext ctx) { }
+	@Override public void exitFalse(a22.FalseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_qualquer(a22.Exp_qualquerContext ctx) { }
+	@Override public void enterIdentifier(a22.IdentifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_qualquer(a22.Exp_qualquerContext ctx) { }
+	@Override public void exitIdentifier(a22.IdentifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_parenteses(a22.Exp_parentesesContext ctx) { }
+	@Override public void enterFun_call(a22.Fun_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_parenteses(a22.Exp_parentesesContext ctx) { }
+	@Override public void exitFun_call(a22.Fun_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_indexacao_de_ponteiro(a22.Exp_indexacao_de_ponteiroContext ctx) { }
+	@Override public void enterSimple_exp(a22.Simple_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_indexacao_de_ponteiro(a22.Exp_indexacao_de_ponteiroContext ctx) { }
+	@Override public void exitSimple_exp(a22.Simple_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_md(a22.Exp_mdContext ctx) { }
+	@Override public void enterPm_exp(a22.Pm_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_md(a22.Exp_mdContext ctx) { }
+	@Override public void exitPm_exp(a22.Pm_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_ss(a22.Exp_ssContext ctx) { }
+	@Override public void enterEqual_exp(a22.Equal_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_ss(a22.Exp_ssContext ctx) { }
+	@Override public void exitEqual_exp(a22.Equal_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_comparadores(a22.Exp_comparadoresContext ctx) { }
+	@Override public void enterIndex_exp(a22.Index_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_comparadores(a22.Exp_comparadoresContext ctx) { }
+	@Override public void exitIndex_exp(a22.Index_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_elogico(a22.Exp_elogicoContext ctx) { }
+	@Override public void enterParen_exp(a22.Paren_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_elogico(a22.Exp_elogicoContext ctx) { }
+	@Override public void exitParen_exp(a22.Paren_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp_ologico(a22.Exp_ologicoContext ctx) { }
+	@Override public void enterMember_acc_exp(a22.Member_acc_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp_ologico(a22.Exp_ologicoContext ctx) { }
+	@Override public void exitMember_acc_exp(a22.Member_acc_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_indexacao_de_ponteiro(a22.Op_indexacao_de_ponteiroContext ctx) { }
+	@Override public void enterLlgg_exp(a22.Llgg_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_indexacao_de_ponteiro(a22.Op_indexacao_de_ponteiroContext ctx) { }
+	@Override public void exitLlgg_exp(a22.Llgg_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_isne(a22.Op_isneContext ctx) { }
+	@Override public void enterNegation_exp(a22.Negation_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_isne(a22.Op_isneContext ctx) { }
+	@Override public void exitNegation_exp(a22.Negation_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_comparadores(a22.Op_comparadoresContext ctx) { }
+	@Override public void enterMdr_exp(a22.Mdr_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_comparadores(a22.Op_comparadoresContext ctx) { }
+	@Override public void exitMdr_exp(a22.Mdr_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_elogico(a22.Op_elogicoContext ctx) { }
+	@Override public void enterAnd_exp(a22.And_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_elogico(a22.Op_elogicoContext ctx) { }
+	@Override public void exitAnd_exp(a22.And_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_ologico(a22.Op_ologicoContext ctx) { }
+	@Override public void enterOr_exp(a22.Or_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_ologico(a22.Op_ologicoContext ctx) { }
+	@Override public void exitOr_exp(a22.Or_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_soma_label_unique(a22.Op_soma_label_uniqueContext ctx) { }
+	@Override public void enterFunction_def(a22.Function_defContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_soma_label_unique(a22.Op_soma_label_uniqueContext ctx) { }
+	@Override public void exitFunction_def(a22.Function_defContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_subtrair_label_unique(a22.Op_subtrair_label_uniqueContext ctx) { }
+	@Override public void enterFunction_def_args(a22.Function_def_argsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_subtrair_label_unique(a22.Op_subtrair_label_uniqueContext ctx) { }
+	@Override public void exitFunction_def_args(a22.Function_def_argsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_dividir_label_unique(a22.Op_dividir_label_uniqueContext ctx) { }
+	@Override public void enterFunction_def_args_types(a22.Function_def_args_typesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_dividir_label_unique(a22.Op_dividir_label_uniqueContext ctx) { }
+	@Override public void exitFunction_def_args_types(a22.Function_def_args_typesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_multiplicar_label_unique(a22.Op_multiplicar_label_uniqueContext ctx) { }
+	@Override public void enterNormal_fun_call(a22.Normal_fun_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_multiplicar_label_unique(a22.Op_multiplicar_label_uniqueContext ctx) { }
+	@Override public void exitNormal_fun_call(a22.Normal_fun_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_resto_label_unique(a22.Op_resto_label_uniqueContext ctx) { }
+	@Override public void enterWrite_fun_call(a22.Write_fun_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_resto_label_unique(a22.Op_resto_label_uniqueContext ctx) { }
+	@Override public void exitWrite_fun_call(a22.Write_fun_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArg_funcao_label(a22.Arg_funcao_labelContext ctx) { }
+	@Override public void enterRead_fun_call(a22.Read_fun_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArg_funcao_label(a22.Arg_funcao_labelContext ctx) { }
+	@Override public void exitRead_fun_call(a22.Read_fun_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArg_funcao_pointers_label(a22.Arg_funcao_pointers_labelContext ctx) { }
+	@Override public void enterFunction_call_args(a22.Function_call_argsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArg_funcao_pointers_label(a22.Arg_funcao_pointers_labelContext ctx) { }
+	@Override public void exitFunction_call_args(a22.Function_call_argsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArgs_funcao_label(a22.Args_funcao_labelContext ctx) { }
+	@Override public void enterAssignment_state(a22.Assignment_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArgs_funcao_label(a22.Args_funcao_labelContext ctx) { }
+	@Override public void exitAssignment_state(a22.Assignment_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracao_funcao_void_label(a22.Declaracao_funcao_void_labelContext ctx) { }
+	@Override public void enterConditional_state(a22.Conditional_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracao_funcao_void_label(a22.Declaracao_funcao_void_labelContext ctx) { }
+	@Override public void exitConditional_state(a22.Conditional_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracao_funcao_label(a22.Declaracao_funcao_labelContext ctx) { }
+	@Override public void enterWhile_state(a22.While_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracao_funcao_label(a22.Declaracao_funcao_labelContext ctx) { }
+	@Override public void exitWhile_state(a22.While_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBloco_label(a22.Bloco_labelContext ctx) { }
+	@Override public void enterFor_state(a22.For_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBloco_label(a22.Bloco_labelContext ctx) { }
+	@Override public void exitFor_state(a22.For_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLeave_label(a22.Leave_labelContext ctx) { }
+	@Override public void enterControl_state(a22.Control_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLeave_label(a22.Leave_labelContext ctx) { }
+	@Override public void exitControl_state(a22.Control_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRestart_label(a22.Restart_labelContext ctx) { }
+	@Override public void enterExpression_state(a22.Expression_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRestart_label(a22.Restart_labelContext ctx) { }
+	@Override public void exitExpression_state(a22.Expression_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReturn_label(a22.Return_labelContext ctx) { }
+	@Override public void enterBlock_state(a22.Block_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReturn_label(a22.Return_labelContext ctx) { }
+	@Override public void exitBlock_state(a22.Block_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstCont_Return_exp_label(a22.InstCont_Return_exp_labelContext ctx) { }
+	@Override public void enterSemicolon_state(a22.Semicolon_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstCont_Return_exp_label(a22.InstCont_Return_exp_labelContext ctx) { }
+	@Override public void exitSemicolon_state(a22.Semicolon_stateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAtribuicao_label(a22.Atribuicao_labelContext ctx) { }
+	@Override public void enterAssignment(a22.AssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAtribuicao_label(a22.Atribuicao_labelContext ctx) { }
+	@Override public void exitAssignment(a22.AssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstrucao_condicional_label(a22.Instrucao_condicional_labelContext ctx) { }
+	@Override public void enterConditional(a22.ConditionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstrucao_condicional_label(a22.Instrucao_condicional_labelContext ctx) { }
+	@Override public void exitConditional(a22.ConditionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCiclo_label(a22.Ciclo_labelContext ctx) { }
+	@Override public void enterWhile_loop(a22.While_loopContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCiclo_label(a22.Ciclo_labelContext ctx) { }
+	@Override public void exitWhile_loop(a22.While_loopContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSubbloco_label(a22.Subbloco_labelContext ctx) { }
+	@Override public void enterFor_loop(a22.For_loopContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSubbloco_label(a22.Subbloco_labelContext ctx) { }
+	@Override public void exitFor_loop(a22.For_loopContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrologo_label(a22.Prologo_labelContext ctx) { }
+	@Override public void enterControl(a22.ControlContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrologo_label(a22.Prologo_labelContext ctx) { }
+	@Override public void exitControl(a22.ControlContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEpilogo_label(a22.Epilogo_labelContext ctx) { }
+	@Override public void enterBlock_statement(a22.Block_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEpilogo_label(a22.Epilogo_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInstrucoes_exp_qualquer(a22.Instrucoes_exp_qualquerContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInstrucoes_exp_qualquer(a22.Instrucoes_exp_qualquerContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInstrucoes_instrucoes_controle(a22.Instrucoes_instrucoes_controleContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInstrucoes_instrucoes_controle(a22.Instrucoes_instrucoes_controleContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInstrucoes_atribuicao(a22.Instrucoes_atribuicaoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInstrucoes_atribuicao(a22.Instrucoes_atribuicaoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInstrucoes_instrucao_condicional(a22.Instrucoes_instrucao_condicionalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInstrucoes_instrucao_condicional(a22.Instrucoes_instrucao_condicionalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInstrucoes_ciclo(a22.Instrucoes_cicloContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInstrucoes_ciclo(a22.Instrucoes_cicloContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInstrucoes_subbloco(a22.Instrucoes_subblocoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInstrucoes_subbloco(a22.Instrucoes_subblocoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterReturn_exp_label(a22.Return_exp_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitReturn_exp_label(a22.Return_exp_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInvFunc_invocao_funcao(a22.InvFunc_invocao_funcaoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInvFunc_invocao_funcao(a22.InvFunc_invocao_funcaoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInvFunc_funcao_especial(a22.InvFunc_funcao_especialContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInvFunc_funcao_especial(a22.InvFunc_funcao_especialContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInvocacao_funcao_label(a22.Invocacao_funcao_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInvocacao_funcao_label(a22.Invocacao_funcao_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInvFuncEspecial_arroba(a22.InvFuncEspecial_arrobaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInvFuncEspecial_arroba(a22.InvFuncEspecial_arrobaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInvFuncEspecial_sizeof(a22.InvFuncEspecial_sizeofContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInvFuncEspecial_sizeof(a22.InvFuncEspecial_sizeofContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInvFuncEspecial_write(a22.InvFuncEspecial_writeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInvFuncEspecial_write(a22.InvFuncEspecial_writeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInvFuncEspecial_writeln(a22.InvFuncEspecial_writelnContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInvFuncEspecial_writeln(a22.InvFuncEspecial_writelnContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArroba_label(a22.Arroba_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArroba_label(a22.Arroba_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSizeof_label(a22.Sizeof_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSizeof_label(a22.Sizeof_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterWrite_label(a22.Write_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitWrite_label(a22.Write_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterWriteln_label(a22.Writeln_labelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitWriteln_label(a22.Writeln_labelContext ctx) { }
+	@Override public void exitBlock_statement(a22.Block_statementContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

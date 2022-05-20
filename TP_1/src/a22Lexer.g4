@@ -1,37 +1,48 @@
 lexer grammar a22Lexer;
 
-WHITE_SPACE :  [ \t\r\n]+ -> skip;
+// ------------------------------ ARITHMETIC OPERATORS ------------------------------
 
+PLUS_OP: '+';
+MINUS_OP: '-';
+MULTIPLICATION_OP: '*';
+DIVISION_OP: '/';
+REMAINDER_OP: '%';
+ASSIGN_OP: '=';
 
+// ------------------------------ RELATIONAL OPERATORS ------------------------------
 
-IDENTIFICATOR: LETTER (LETTER | DIGIT)*;
+EQUAL: '==';
+UNEQUAL: '!=';
+GREATER: '>';
+LESS: '<';
+GREATER_EQUAL: '>=';
+LESS_EQUAL: '<=';
 
+// ------------------------------ LOGIC OPERATORS ------------------------------
 
+AND: 'and';
+OR: 'or';
+NOT: 'not';
+TRUE: 'true';
+FALSE: 'false';
 
-LETTER: [a-zA-Z]|'_';
+// ------------------------------ DATA TYPES ------------------------------
 
+BOOL: 'bool';
+INT: 'int';
+REAL: 'real';
+STRING: 'string';
+VOID: 'void';
+TYPE: 'type';
 
-
-
-INTEGER: '0'  ([1-9] DIGIT*);
-fragment DIGIT: [0-9];
-
-REAL_LITERAL: [0-9]+ POINT [0-9]+;
-
+// ------------------------------ FUNCTIONS ------------------------------
 
 WRITE: 'write';
 WRITELN: 'writeln';
 READ: 'read';
-AND: 'and';
-OR: 'or';
-NOT: 'not';
-INT: 'int';
-BOOL: 'bool';
-REAL: 'real';
-STRING: 'string';
-VOID: 'void';
-TRUE: 'true';
-FALSE: 'false';
+
+// ------------------------------ FLOW CONTROL ------------------------------
+
 IF: 'if';
 THEN: 'then';
 ELSE: 'else';
@@ -42,18 +53,33 @@ TO: 'to';
 DOWNTO: 'downto';
 STEP: 'step';
 RETURN: 'return';
-TYPE: 'type';
-ASSIGN: '=';
 
-SEMICOLON : ';';
-COLON: ',';
-POINT: '.';
-CIRCUMFLEX: '^';
-LEFT_BRACKET: '(';
-RIGHT_BRACKET: ')';
-LEFT_SQUARE_BRACKET: '[';
-RIGHT_SQUARE_BRACKET: ']';
-LEFT_CURLY_BRACKET: '{';
-RIGHT_CURLY_BRACKET: '}';
+// ------------------------------ MISCELLANEOUS ------------------------------
 
+SEMICOLON: ';';
+COMMA: ',';
+CARET: '^';
+PERIOD: '.';
+LEFT_PARENTHESIS: '(';
+RIGHT_PARENTHESIS: ')';
+LEFT_BRACKET: '[';
+RIGHT_BRACKET: ']';
+LEFT_CURLY: '{';
+RIGHT_CURLY: '}';
 
+// ------------------------------ LITERALS ------------------------------
+
+INT_LITERAL: '0' | [1-9] [0-9]*;
+REAL_LITERAL: INT_LITERAL '.' [0-9]+;
+fragment ESCAPE_SEQUENCE: '\\' [trn"\\];
+STRING_LITERAL: '"' (ESCAPE_SEQUENCE | .)*? '"';
+fragment LETTER: [a-zA-Z];
+IDENTIFIER: (LETTER | '_') (LETTER | [0-9] | '_')*;
+
+// ------------------------------ WHITESPACES/COMMENTS ------------------------------
+
+WHITESPACE: [ \t\r\n]+ -> skip;
+SINGLE_LINE_COMMENT: '//' ~[\r\n]* -> skip;
+MULTIPLE_LINE_COMMENT: '/*' .*? '*/' -> skip;
+
+// Authors: PL2-g20(a64543 & a64560).

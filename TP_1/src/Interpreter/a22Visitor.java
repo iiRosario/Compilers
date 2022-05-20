@@ -11,432 +11,314 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface a22Visitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link a22#programa}.
+	 * Visit a parse tree produced by {@link a22#start}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrograma(a22.ProgramaContext ctx);
+	T visitStart(a22.StartContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#binaries_op}.
+	 * Visit a parse tree produced by {@link a22#file}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBinaries_op(a22.Binaries_opContext ctx);
+	T visitFile(a22.FileContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#unary_op}.
+	 * Visit a parse tree produced by {@link a22#variable}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUnary_op(a22.Unary_opContext ctx);
+	T visitVariable(a22.VariableContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#voidd}.
+	 * Visit a parse tree produced by {@link a22#variable_declaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVoidd(a22.VoiddContext ctx);
+	T visitVariable_declaration(a22.Variable_declarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#declaracoes}.
+	 * Visit a parse tree produced by {@link a22#brackets}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaracoes(a22.DeclaracoesContext ctx);
+	T visitBrackets(a22.BracketsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#declaracao}.
+	 * Visit a parse tree produced by {@link a22#variable_initialization}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaracao(a22.DeclaracaoContext ctx);
+	T visitVariable_initialization(a22.Variable_initializationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#declaracao_variavel}.
+	 * Visit a parse tree produced by {@link a22#primitive_data_type}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaracao_variavel(a22.Declaracao_variavelContext ctx);
+	T visitPrimitive_data_type(a22.Primitive_data_typeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#pointer_types}.
+	 * Visit a parse tree produced by {@link a22#composite_data_type_def}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPointer_types(a22.Pointer_typesContext ctx);
+	T visitComposite_data_type_def(a22.Composite_data_type_defContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#declaracao_variavel_simples}.
+	 * Visit a parse tree produced by the {@code int_literal}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaracao_variavel_simples(a22.Declaracao_variavel_simplesContext ctx);
+	T visitInt_literal(a22.Int_literalContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#declaracao_variavel_inicializacao}.
+	 * Visit a parse tree produced by the {@code real_literal}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaracao_variavel_inicializacao(a22.Declaracao_variavel_inicializacaoContext ctx);
+	T visitReal_literal(a22.Real_literalContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_binarias}.
+	 * Visit a parse tree produced by the {@code string_literal}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_binarias(a22.Exp_binariasContext ctx);
+	T visitString_literal(a22.String_literalContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_unario}.
+	 * Visit a parse tree produced by the {@code true}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_unario(a22.Exp_unarioContext ctx);
+	T visitTrue(a22.TrueContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_number}.
+	 * Visit a parse tree produced by the {@code false}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_number(a22.Exp_numberContext ctx);
+	T visitFalse(a22.FalseContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_qualquer}.
+	 * Visit a parse tree produced by the {@code identifier}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_qualquer(a22.Exp_qualquerContext ctx);
+	T visitIdentifier(a22.IdentifierContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_parenteses}.
+	 * Visit a parse tree produced by the {@code fun_call}
+	 * labeled alternative in {@link a22#simple_expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_parenteses(a22.Exp_parentesesContext ctx);
+	T visitFun_call(a22.Fun_callContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_indexacao_de_ponteiro}.
+	 * Visit a parse tree produced by the {@code simple_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_indexacao_de_ponteiro(a22.Exp_indexacao_de_ponteiroContext ctx);
+	T visitSimple_exp(a22.Simple_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_md}.
+	 * Visit a parse tree produced by the {@code pm_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_md(a22.Exp_mdContext ctx);
+	T visitPm_exp(a22.Pm_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_ss}.
+	 * Visit a parse tree produced by the {@code equal_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_ss(a22.Exp_ssContext ctx);
+	T visitEqual_exp(a22.Equal_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_comparadores}.
+	 * Visit a parse tree produced by the {@code index_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_comparadores(a22.Exp_comparadoresContext ctx);
+	T visitIndex_exp(a22.Index_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_elogico}.
+	 * Visit a parse tree produced by the {@code paren_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_elogico(a22.Exp_elogicoContext ctx);
+	T visitParen_exp(a22.Paren_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#exp_ologico}.
+	 * Visit a parse tree produced by the {@code member_acc_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp_ologico(a22.Exp_ologicoContext ctx);
+	T visitMember_acc_exp(a22.Member_acc_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#op_indexacao_de_ponteiro}.
+	 * Visit a parse tree produced by the {@code llgg_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_indexacao_de_ponteiro(a22.Op_indexacao_de_ponteiroContext ctx);
+	T visitLlgg_exp(a22.Llgg_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#op_isne}.
+	 * Visit a parse tree produced by the {@code negation_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_isne(a22.Op_isneContext ctx);
+	T visitNegation_exp(a22.Negation_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#op_comparadores}.
+	 * Visit a parse tree produced by the {@code mdr_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_comparadores(a22.Op_comparadoresContext ctx);
+	T visitMdr_exp(a22.Mdr_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#op_elogico}.
+	 * Visit a parse tree produced by the {@code and_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_elogico(a22.Op_elogicoContext ctx);
+	T visitAnd_exp(a22.And_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link a22#op_ologico}.
+	 * Visit a parse tree produced by the {@code or_exp}
+	 * labeled alternative in {@link a22#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_ologico(a22.Op_ologicoContext ctx);
+	T visitOr_exp(a22.Or_expContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Op_soma_label_unique}
-	 * labeled alternative in {@link a22#op_soma}.
+	 * Visit a parse tree produced by {@link a22#function_def}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_soma_label_unique(a22.Op_soma_label_uniqueContext ctx);
+	T visitFunction_def(a22.Function_defContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Op_subtrair_label_unique}
-	 * labeled alternative in {@link a22#op_subtrair}.
+	 * Visit a parse tree produced by {@link a22#function_def_args}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_subtrair_label_unique(a22.Op_subtrair_label_uniqueContext ctx);
+	T visitFunction_def_args(a22.Function_def_argsContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Op_dividir_label_unique}
-	 * labeled alternative in {@link a22#op_dividir}.
+	 * Visit a parse tree produced by {@link a22#function_def_args_types}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_dividir_label_unique(a22.Op_dividir_label_uniqueContext ctx);
+	T visitFunction_def_args_types(a22.Function_def_args_typesContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Op_multiplicar_label_unique}
-	 * labeled alternative in {@link a22#op_multiplicar}.
+	 * Visit a parse tree produced by the {@code normal_fun_call}
+	 * labeled alternative in {@link a22#function_call}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_multiplicar_label_unique(a22.Op_multiplicar_label_uniqueContext ctx);
+	T visitNormal_fun_call(a22.Normal_fun_callContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Op_resto_label_unique}
-	 * labeled alternative in {@link a22#op_resto}.
+	 * Visit a parse tree produced by the {@code write_fun_call}
+	 * labeled alternative in {@link a22#function_call}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_resto_label_unique(a22.Op_resto_label_uniqueContext ctx);
+	T visitWrite_fun_call(a22.Write_fun_callContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Arg_funcao_label}
-	 * labeled alternative in {@link a22#argumento_funcao}.
+	 * Visit a parse tree produced by the {@code read_fun_call}
+	 * labeled alternative in {@link a22#function_call}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitArg_funcao_label(a22.Arg_funcao_labelContext ctx);
+	T visitRead_fun_call(a22.Read_fun_callContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Arg_funcao_pointers_label}
-	 * labeled alternative in {@link a22#argumento_funcao}.
+	 * Visit a parse tree produced by {@link a22#function_call_args}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitArg_funcao_pointers_label(a22.Arg_funcao_pointers_labelContext ctx);
+	T visitFunction_call_args(a22.Function_call_argsContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Args_funcao_label}
-	 * labeled alternative in {@link a22#argumentos_funcao}.
+	 * Visit a parse tree produced by the {@code assignment_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitArgs_funcao_label(a22.Args_funcao_labelContext ctx);
+	T visitAssignment_state(a22.Assignment_stateContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Declaracao_funcao_void_label}
-	 * labeled alternative in {@link a22#declaracao_funcao_void}.
+	 * Visit a parse tree produced by the {@code conditional_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaracao_funcao_void_label(a22.Declaracao_funcao_void_labelContext ctx);
+	T visitConditional_state(a22.Conditional_stateContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Declaracao_funcao_label}
-	 * labeled alternative in {@link a22#declaracao_funcao}.
+	 * Visit a parse tree produced by the {@code while_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaracao_funcao_label(a22.Declaracao_funcao_labelContext ctx);
+	T visitWhile_state(a22.While_stateContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Bloco_label}
-	 * labeled alternative in {@link a22#bloco}.
+	 * Visit a parse tree produced by the {@code for_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBloco_label(a22.Bloco_labelContext ctx);
+	T visitFor_state(a22.For_stateContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Leave_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Visit a parse tree produced by the {@code control_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLeave_label(a22.Leave_labelContext ctx);
+	T visitControl_state(a22.Control_stateContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Restart_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Visit a parse tree produced by the {@code expression_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRestart_label(a22.Restart_labelContext ctx);
+	T visitExpression_state(a22.Expression_stateContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Return_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Visit a parse tree produced by the {@code block_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitReturn_label(a22.Return_labelContext ctx);
+	T visitBlock_state(a22.Block_stateContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code InstCont_Return_exp_label}
-	 * labeled alternative in {@link a22#instrucoes_controle}.
+	 * Visit a parse tree produced by the {@code semicolon_state}
+	 * labeled alternative in {@link a22#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInstCont_Return_exp_label(a22.InstCont_Return_exp_labelContext ctx);
+	T visitSemicolon_state(a22.Semicolon_stateContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Atribuicao_label}
-	 * labeled alternative in {@link a22#atribuicao}.
+	 * Visit a parse tree produced by {@link a22#assignment}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAtribuicao_label(a22.Atribuicao_labelContext ctx);
+	T visitAssignment(a22.AssignmentContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Instrucao_condicional_label}
-	 * labeled alternative in {@link a22#instrucao_condicional}.
+	 * Visit a parse tree produced by {@link a22#conditional}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInstrucao_condicional_label(a22.Instrucao_condicional_labelContext ctx);
+	T visitConditional(a22.ConditionalContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Ciclo_label}
-	 * labeled alternative in {@link a22#ciclo}.
+	 * Visit a parse tree produced by {@link a22#while_loop}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCiclo_label(a22.Ciclo_labelContext ctx);
+	T visitWhile_loop(a22.While_loopContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Subbloco_label}
-	 * labeled alternative in {@link a22#subbloco}.
+	 * Visit a parse tree produced by {@link a22#for_loop}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSubbloco_label(a22.Subbloco_labelContext ctx);
+	T visitFor_loop(a22.For_loopContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Prologo_label}
-	 * labeled alternative in {@link a22#prologo}.
+	 * Visit a parse tree produced by {@link a22#control}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrologo_label(a22.Prologo_labelContext ctx);
+	T visitControl(a22.ControlContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Epilogo_label}
-	 * labeled alternative in {@link a22#epilogo}.
+	 * Visit a parse tree produced by {@link a22#block_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitEpilogo_label(a22.Epilogo_labelContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Instrucoes_exp_qualquer}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInstrucoes_exp_qualquer(a22.Instrucoes_exp_qualquerContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Instrucoes_instrucoes_controle}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInstrucoes_instrucoes_controle(a22.Instrucoes_instrucoes_controleContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Instrucoes_atribuicao}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInstrucoes_atribuicao(a22.Instrucoes_atribuicaoContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Instrucoes_instrucao_condicional}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInstrucoes_instrucao_condicional(a22.Instrucoes_instrucao_condicionalContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Instrucoes_ciclo}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInstrucoes_ciclo(a22.Instrucoes_cicloContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Instrucoes_subbloco}
-	 * labeled alternative in {@link a22#instrucoes}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInstrucoes_subbloco(a22.Instrucoes_subblocoContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Return_exp_label}
-	 * labeled alternative in {@link a22#return_exp}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitReturn_exp_label(a22.Return_exp_labelContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code InvFunc_invocao_funcao}
-	 * labeled alternative in {@link a22#invocacao_funcoes}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInvFunc_invocao_funcao(a22.InvFunc_invocao_funcaoContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code InvFunc_funcao_especial}
-	 * labeled alternative in {@link a22#invocacao_funcoes}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInvFunc_funcao_especial(a22.InvFunc_funcao_especialContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Invocacao_funcao_label}
-	 * labeled alternative in {@link a22#invocacao_funcao}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInvocacao_funcao_label(a22.Invocacao_funcao_labelContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code InvFuncEspecial_arroba}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInvFuncEspecial_arroba(a22.InvFuncEspecial_arrobaContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code InvFuncEspecial_sizeof}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInvFuncEspecial_sizeof(a22.InvFuncEspecial_sizeofContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code InvFuncEspecial_write}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInvFuncEspecial_write(a22.InvFuncEspecial_writeContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code InvFuncEspecial_writeln}
-	 * labeled alternative in {@link a22#invocacao_funcao_especial}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInvFuncEspecial_writeln(a22.InvFuncEspecial_writelnContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Arroba_label}
-	 * labeled alternative in {@link a22#arroba}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArroba_label(a22.Arroba_labelContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Sizeof_label}
-	 * labeled alternative in {@link a22#sizeof}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSizeof_label(a22.Sizeof_labelContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Write_label}
-	 * labeled alternative in {@link a22#write}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWrite_label(a22.Write_labelContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Writeln_label}
-	 * labeled alternative in {@link a22#writeln}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWriteln_label(a22.Writeln_labelContext ctx);
+	T visitBlock_statement(a22.Block_statementContext ctx);
 }

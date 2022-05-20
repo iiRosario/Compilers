@@ -1,103 +1,85 @@
 lexer grammar a22Lexer;
-VOID_: 'void';
-TYPES: INT_ | BOOLEAN_ | FLOAT_ | STRING_ | VOID_;
 
-fragment INT_: 'int';
-fragment BOOLEAN_: 'boolean';
-fragment FLOAT_: 'float';
-fragment STRING_: 'string';
+// ------------------------------ ARITHMETIC OPERATORS ------------------------------
 
+PLUS_OP: '+';
+MINUS_OP: '-';
+MULTIPLICATION_OP: '*';
+DIVISION_OP: '/';
+REMAINDER_OP: '%';
+ASSIGN_OP: '=';
 
- INT_P: '<int>';
- BOOLEAN_P: '<bool>';
- FLOAT_P: '<float>';
- STRING_P: '<string>';
- VOID_P: '<void>';
+// ------------------------------ RELATIONAL OPERATORS ------------------------------
 
-//BINARIES_OP: PLUS | MINUS | MULTIPLY | DIVIDE | PERCENTAGE |  LT |  GT | GTE | EQUALS | NEQUAL | AND | OR | LSB | RSB;
-//UNARY_OP: PLUS | MINUS | TILDE | QM | LP | RP;
+EQUAL: '==';
+UNEQUAL: '!=';
+GREATER: '>';
+LESS: '<';
+GREATER_EQUAL: '>=';
+LESS_EQUAL: '<=';
 
-LP: '(';
-EQUAL: '=';
-RP: ')';
-LSB: '[';
-RSB: ']';
-LB: '{';
-RB: '}';
-PLUS: '+';
-MINUS: '-';
-TILDE: '~';
-QM: '?';
-MULTIPLY: '*';
-DIVIDE: '/';
-PERCENTAGE: '%';
-LT: '<';
-GT: '>';
-GTE: '>=';
-LTE: '<=';
-EQUALS: '==';
-NEQUAL: '!=';
-AND: '&&';
-OR: '||';
-ARROBA: '@';
-WRITE: 'write';
-WRITELN: 'writeln';
-SIZEOF: 'sizeof';
-EPILOGO_TOKEN: '>>';
-OPERATORS: '(' | ')' | '['| ']' | '+' | '-'| '?' | '%' | '>' | '<' | '>=' | '<='
-            | '==' | '!=' | '~' | '&&' | '||' | '=' | '>>' | '@';
+// ------------------------------ LOGIC OPERATORS ------------------------------
 
-COMMA: ',';
-BT: ';';
-
+AND: 'and';
+OR: 'or';
+NOT: 'not';
 TRUE: 'true';
 FALSE: 'false';
 
+// ------------------------------ DATA TYPES ------------------------------
 
-//KEYWORDS : 'int' | 'bool' |'float' |'string' |'void' |'sizeof' |'null' |'alg' |'true' |'false'|
-//           'while' |'do' |'finally' |'leave' |'restart' |'return' |'if' |'then' |'else' |'write' |'writeln';
+BOOL: 'bool';
+INT: 'int';
+REAL: 'real';
+STRING: 'string';
+VOID: 'void';
+TYPE: 'type';
 
+// ------------------------------ FUNCTIONS ------------------------------
 
+WRITE: 'write';
+WRITELN: 'writeln';
+READ: 'read';
 
-LEAVE: 'leave';
-RESTART: 'restart';
-RETURN: 'return';
+// ------------------------------ FLOW CONTROL ------------------------------
+
 IF: 'if';
-ELSE: 'else';
 THEN: 'then';
+ELSE: 'else';
 WHILE: 'while';
 DO: 'do';
-FINALLY: 'finally';
+FOR: 'for';
+TO: 'to';
+DOWNTO: 'downto';
+STEP: 'step';
+RETURN: 'return';
 
-IDENTIFICATOR : (LETRA+[0-9]* | LETRA+ | [0-9]*LETRA+)+ ;
+// ------------------------------ MISCELLANEOUS ------------------------------
 
-fragment LETRA : [a-zA-Z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u00FF]|'_';
+SEMICOLON: ';';
+COMMA: ',';
+CARET: '^';
+PERIOD: '.';
+LEFT_PARENTHESIS: '(';
+RIGHT_PARENTHESIS: ')';
+LEFT_BRACKET: '[';
+RIGHT_BRACKET: ']';
+LEFT_CURLY: '{';
+RIGHT_CURLY: '}';
 
-LITERAL_I : ([1-9] [0-9]*) | [0] ;
+// ------------------------------ LITERALS ------------------------------
 
-LITERAL_R : [0-9]+ '.' [0-9]* EXPONENT?
-            |  '.' [0-9]+ EXPONENT?
-            |  [0-9]+ EXPONENT;
+INT_LITERAL: '0' | [1-9] [0-9]*;
+REAL_LITERAL: INT_LITERAL '.' [0-9]+;
+fragment ESCAPE_SEQUENCE: '\\' [trn"\\];
+STRING_LITERAL: '"' (ESCAPE_SEQUENCE | .)*? '"';
+fragment LETTER: [a-zA-Z];
+IDENTIFIER: (LETTER | '_') (LETTER | [0-9] | '_')*;
 
-fragment
-EXPONENT : ('e'|'E') ('+'|'-')? [0-9]+ ;
+// ------------------------------ WHITESPACES/COMMENTS ------------------------------
 
-WHITE_SPACE :  [ \t\r\n]+ -> skip;
+WHITESPACE: [ \t\r\n]+ -> skip;
+SINGLE_LINE_COMMENT: '//' ~[\r\n]* -> skip;
+MULTIPLE_LINE_COMMENT: '/*' .*? '*/' -> skip;
 
-SINGLE_LINE_COMMENT : '##' ~[\r\n]* -> skip;
-MULTIPLE_LINE_COMMENT : '(*'.*'*)' -> skip;
-
-
-
-TERMINATORS : (',' | ';' | ' e');
-
-STRING :  ['] ( ~[\u0000~'] | '~'['rtn~] )* ['];
-
-
-ANY: . ;
-
-
-
-
-
-
+// Authors: PL2-g20(a64543 & a64560).
