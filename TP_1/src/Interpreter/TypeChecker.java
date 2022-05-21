@@ -12,7 +12,6 @@ public class TypeChecker extends a22BaseListener{
 
     public Scope globalScope;
     public Scope currentScope;
-
     public FunctionSymbol currentFunction;
     public int semanticErrors;
 
