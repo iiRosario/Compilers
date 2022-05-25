@@ -13,7 +13,7 @@ import org.antlr.v4.runtime.Token;
  * -- with minor modifications by flobo (see readme.txt file for details)
 ***/
 public class Symbol { // A generic programming language symbol
-    public static enum Type {INVALID, tVOID, INT, REAL, BOOLEAN, STRING}
+    public static enum Type {INVALID, tVOID, INT, REAL, BOOL, STRING}
 
     Token token;
     Type type;

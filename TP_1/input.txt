@@ -1,5 +1,3 @@
-int x= 433123.002312;
-
-int y = 10.00;
-
-int z = 1;
+int x, a, b, c;
+bool f, z;
+string cona , pila;

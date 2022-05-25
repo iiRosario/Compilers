@@ -17,7 +17,7 @@ import java.util.Map;
 public class Scope {
     Scope enclosingScope;    // null if global (outermost) scope // scope parent
     String name;             // for debug, there's really no need for it otherwise.
-    Map<String, Symbol> symbols = new LinkedHashMap<String, Symbol>();
+    public Map<String, Symbol> symbols = new LinkedHashMap<String, Symbol>();
 
     public Scope(Scope enclosingScope) {
         this.enclosingScope = enclosingScope;
@@ -46,9 +46,11 @@ public class Scope {
 
     public Symbol resolve(String name) {
         Symbol s = resolve_local(name);
-        if ( s!=null ) return s;
+        if ( s != null )
+            return s;
         // if not here, check any enclosing scope
-        if ( enclosingScope != null ) return enclosingScope.resolve(name);
+        if ( enclosingScope != null )
+            return enclosingScope.resolve(name);
         return null; // not found
     }
 

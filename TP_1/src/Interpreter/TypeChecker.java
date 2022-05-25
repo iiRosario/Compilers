@@ -8,6 +8,8 @@ import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.antlr.v4.runtime.Token;
 
+import java.util.List;
+
 public class TypeChecker extends a22BaseListener{
 
     public Scope globalScope;
@@ -23,9 +25,27 @@ public class TypeChecker extends a22BaseListener{
     public ParseTreeProperty<Scope> scopes = new ParseTreeProperty<>();
 
 
+
+    private boolean defineSymbol(ParserRuleContext ctx, Symbol S){
+        if(S == null) return false;
+
+        Symbol symbol = this.currentScope.resolve(S.lexeme());
+        if(symbol == null){
+            this.currentScope.define(S);
+            return true;
+        }
+
+        if(symbol instanceof FunctionSymbol)
+            System.err.println("Line: " + ctx.start.getLine() + "; Redefining previously defined function " + symbol.lexeme());
+        else
+            System.err.println("Line: " + ctx.start.getLine() + "; Redefining previously defined variable " + symbol.lexeme());
+
+        this.semanticErrors++;
+        return false;
+    }
     @Override
     public void enterStart(a22.StartContext ctx) {
-        globalScope = new Scope(null);
+        globalScope = new Scope(null, "GLOBAL");
         currentScope = globalScope;
         scopes.put(ctx, currentScope);
         this.semanticErrors = 0;
@@ -65,7 +85,31 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitVariable_declaration(a22.Variable_declarationContext ctx) {
+        List<TerminalNode>  tns = ctx.IDENTIFIER();
+        try{
+            ctx.primitive_data_type();
 
+
+            String type = ctx.primitive_data_type().getText().toUpperCase();
+            for( TerminalNode t : tns){
+
+                Symbol symbol = switch (type) {
+                    case "INT" -> new Symbol(t.getSymbol(), Symbol.Type.INT);
+                    case "REAL" -> new Symbol(t.getSymbol(), Symbol.Type.REAL);
+                    case "STRING" -> new Symbol(t.getSymbol(), Symbol.Type.STRING);
+                    case "BOOL" -> new Symbol(t.getSymbol(), Symbol.Type.BOOL);
+                    default -> null;
+                };
+                defineSymbol(ctx, symbol);
+
+            }
+            System.out.println("Scope: " + currentScope.toString());
+            System.out.println(currentScope.symbols);
+
+
+        }catch (NullPointerException e) {
+            System.out.println(ctx.IDENTIFIER(0).getText());
+        }
     }
 
     @Override
@@ -88,15 +132,17 @@ public class TypeChecker extends a22BaseListener{
         String lefttype = ctx.getChild(0).getText().toUpperCase();
         Symbol.Type righttype = exprType.get(ctx.getChild(1).getChild(2));
 
-
-        String name = ctx.getChild(1).getChild(0).
-
         if(!lefttype.equals(righttype.toString().toUpperCase())){
             semanticErrors++;
             System.out.println("Nao sao iguais : " + lefttype + " != " + righttype);
         }
         else{
-            Symbol newSymbol = new Symbol(name, righttype);
+            //Token tn = ctx.assignment().;
+            //tn.
+            //System.out.println("token: " + tn);
+            //Symbol newSymbol = new Symbol(tn, righttype);
+            //exprType.put(ctx, );
+            //System.out.println("symbol: " + newSymbol);
         }
 
 
@@ -157,12 +203,12 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitTrue(a22.TrueContext ctx) {
-        exprType.put(ctx, Symbol.Type.BOOLEAN);
+        exprType.put(ctx, Symbol.Type.BOOL);
     }
 
     @Override
     public void exitFalse(a22.FalseContext ctx) {
-        exprType.put(ctx, Symbol.Type.BOOLEAN);
+        exprType.put(ctx, Symbol.Type.BOOL);
     }
 
     // =============================
