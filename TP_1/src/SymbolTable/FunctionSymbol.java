@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class FunctionSymbol extends Symbol {
     ArrayList<Symbol> arguments = new ArrayList<Symbol>();
 
-    public FunctionSymbol(Token token, Type retType) {
+    public FunctionSymbol(Token token, String retType) {
         super(token, retType);
     }
 

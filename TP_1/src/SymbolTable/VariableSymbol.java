@@ -13,6 +13,6 @@ import org.antlr.v4.runtime.Token;
 
 /** Represents a variable definition (token,type) in symbol table */
 public class VariableSymbol extends Symbol {
-    public VariableSymbol(Token token, Type type) { super(token, type); }
+    public VariableSymbol(Token token, String type) { super(token, type); }
 }
 

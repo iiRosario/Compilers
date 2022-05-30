@@ -40,7 +40,7 @@ simple_expression: INT_LITERAL          #int_literal
                     | function_call     #fun_call
                     ;
 
-expression: simple_expression           #simple_exp
+expression: simple_expression                                                           #simple_exp
             | LEFT_PARENTHESIS expression RIGHT_PARENTHESIS                             #paren_exp
             | IDENTIFIER LEFT_BRACKET expression RIGHT_BRACKET                          #index_exp
             | IDENTIFIER (PERIOD IDENTIFIER)+                                           #member_acc_exp

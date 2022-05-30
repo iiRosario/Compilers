@@ -1,3 +1,5 @@
-int x, a, b, c;
-bool f, z;
-string cona , pila;
+int pila = 1;
+int pila(){
+
+return 1+1;
+}

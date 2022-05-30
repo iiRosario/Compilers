@@ -2,6 +2,9 @@ package SymbolTable;
 
 import org.antlr.v4.runtime.Token;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /***
  * Excerpted from "The Definitive ANTLR 4 Reference",
  * published by The Pragmatic Bookshelf.
@@ -13,19 +16,38 @@ import org.antlr.v4.runtime.Token;
  * -- with minor modifications by flobo (see readme.txt file for details)
 ***/
 public class Symbol { // A generic programming language symbol
-    public static enum Type {INVALID, tVOID, INT, REAL, BOOL, STRING}
 
+    public static List<String> TypesList = new ArrayList<>();
+
+
+    public String type;
     Token token;
-    Type type;
     Scope scope;      // All symbols know what scope contains them.
 
     public Symbol(Token token) { this.token = token; }
-    public Symbol(Token token, Type type) { this(token); this.type = type; }
+
+    public Symbol(Token token, String type) {
+        this(token);
+        this.type = type;
+    }
+
     public Token getToken() { return token; }
+
     public String lexeme() { return getToken().getText(); }
 
+
     public String toString() {
-        if ( type!=Type.INVALID ) return '<'+lexeme()+":"+type+'>';
-        return lexeme();
+        return '<'+lexeme()+":"+type+'>';
+    }
+
+    public static boolean addType(String t){
+        if(TypesList.contains(t))
+            return false;
+        return TypesList.add(t);
+    }
+
+    public static boolean isConvertibleTo(String from, String to){
+        if(from.equals(to)) return true;
+        return from.equals("int") && to.equals("real");
     }
 }
