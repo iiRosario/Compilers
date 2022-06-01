@@ -5,10 +5,11 @@ import SymbolTable.Symbol;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import java.util.List;
+import java.util.*;
 
 public class TypeChecker extends a22BaseListener{
 
@@ -22,7 +23,7 @@ public class TypeChecker extends a22BaseListener{
 
 
     public ParseTreeProperty<String> exprType = new ParseTreeProperty<>();
-
+    public List<ParseTreeProperty<Symbol>> structList = new ArrayList<>();
     public ParseTreeProperty<Scope> scopes = new ParseTreeProperty<>();
 
 
@@ -38,9 +39,9 @@ public class TypeChecker extends a22BaseListener{
         }
 
         if(symbol instanceof FunctionSymbol)
-            System.err.println("Line: " + ctx.start.getLine() + "; Redefining previously defined function " + symbol.lexeme());
+            System.err.println("Line: " + ctx.start.getLine() + "; Redefining previously function " + symbol.lexeme());
         else
-            System.err.println("Line: " + ctx.start.getLine() + "; Redefining previously defined variable " + symbol.lexeme());
+            System.err.println("Line: " + ctx.start.getLine() + "; Redefining previously variable " + symbol.lexeme());
 
         this.semanticErrors++;
         return false;
@@ -120,6 +121,22 @@ public class TypeChecker extends a22BaseListener{
 
             }
             for( TerminalNode t : tns){
+                if(t.getText().equals(type)){
+                    continue;
+                }
+                if(Symbol.TypesList.contains(t.getText())){
+                    System.err.println("Variable name can't be equal to the type "
+                            + t.getText()
+                            + " in line " + t.getSymbol().getLine());
+                    semanticErrors++;
+                }
+                if(type.equals(t.getText())) {
+                    System.err.println("Type and variable name are equal: "
+                            + " type: " + type
+                            + " variable name: " + t.getText()
+                            + " in line " + t.getSymbol().getLine());
+                    semanticErrors++;
+                }
                 defineSymbol(ctx, new Symbol(t.getSymbol(), type));
 
             }
@@ -140,18 +157,12 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void enterVariable_initialization(a22.Variable_initializationContext ctx) {
-
         String variableName1 = ctx.assignment().expression(0).getText();
         String variableName2 = ctx.assignment().expression(1).getText();
+        System.out.println("variable 2: " + variableName2);
 
         System.out.println("identifier: " + variableName1);
-        if(this.currentScope.resolve(variableName1) != null){
-            System.err.println("" +
-                    "Duplicated variable: " + variableName1
-                    + " in line " + ctx.assignment().getStart().getLine());
-            semanticErrors++;
-            return;
-        }
+
 
         String type = "invalid";
         if(ctx.primitive_data_type() != null)
@@ -159,9 +170,21 @@ public class TypeChecker extends a22BaseListener{
         else
             type = ctx.IDENTIFIER().getText();
 
-
+        if(!Symbol.TypesList.contains(type)){
+            System.err.println("Type is not declared: "
+                    + type
+                    + " in line " + ctx.assignment().getStart().getLine());
+            semanticErrors++;
+        }
+        if(type.equals(variableName1)) {
+            System.err.println("Type and variable name are equal: "
+                    + " type: " + type
+                    + " variable name: " + variableName1
+                    + " in line " + ctx.assignment().getStart().getLine());
+            semanticErrors++;
+        }
         defineSymbol(ctx, new Symbol(ctx.assignment().expression(0).start, type));
-        System.out.println("sada: " + variableName2);
+        System.out.println("scope: " + this.currentScope );
     }
 
     @Override
@@ -180,13 +203,26 @@ public class TypeChecker extends a22BaseListener{
     }
 
     @Override
-    public void enterComposite_data_type_def(a22.Composite_data_type_defContext ctx) { }
+    public void enterComposite_data_type_def(a22.Composite_data_type_defContext ctx) {
+        this.currentScope = new Scope(this.globalScope, "struct type : " + ctx.IDENTIFIER().getText());
+
+        if(Symbol.TypesList.contains(ctx.IDENTIFIER().getText())){
+            System.err.println("" +
+                    "Type already defined : " + ctx.IDENTIFIER().getText()
+                    + " in line " + ctx.IDENTIFIER().getSymbol().getLine());
+            semanticErrors++;
+            return;
+        }
+        Symbol.addType(ctx.IDENTIFIER().getText());
+
+
+    }
 
     @Override
     public void exitComposite_data_type_def(a22.Composite_data_type_defContext ctx) {
-        TerminalNode  t = ctx.IDENTIFIER();
-        Symbol.addType(t.getText());
-        //System.out.println("symbol types: " + Symbol.TypesList.toString());
+
+        this.currentScope = this.globalScope;
+        defineSymbol(ctx, new Symbol(ctx.IDENTIFIER().getSymbol(), ctx.IDENTIFIER().getText() ));
     }
 
 
@@ -256,7 +292,7 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitSimple_exp(a22.Simple_expContext ctx) {
-        exprType.put(ctx, exprType.get(ctx.simple_expression().getChild(0)));
+        exprType.put(ctx, exprType.get(ctx.getChild(0)));
     }
 
     @Override
@@ -266,7 +302,8 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitPm_exp(a22.Pm_expContext ctx) {
-
+        System.out.println("pm1: " + exprType.get(ctx.expression(0)));
+        exprType.get(ctx.expression(0));
     }
 
     @Override
@@ -306,7 +343,12 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitMember_acc_exp(a22.Member_acc_expContext ctx) {
-
+        //ctx.ID()
+        //1 ID +e sempre onome da variavel
+        //verificar se o tipo existe
+        //for percorrer os ids para ver se existem
+        //a.b.c.d
+        //ver se o b existe no a, etc etc
     }
 
     @Override
@@ -583,6 +625,22 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void enterAssignment(a22.AssignmentContext ctx) {
+        String variableName1 = ctx.expression(0).getText();
+        String variableName2 = ctx.expression(1).getText();
+        System.out.println("variable 1: " + variableName1);
+        System.out.println("variable 2: " + variableName2);
+
+        //cheking if the first variable is already defined
+        if(this.currentScope.resolve(variableName1) == null){
+            System.err.println("" +
+                    "Variable: " + variableName1
+                    + "does not exist "
+                    + " in line " + ctx.getStart().getLine());
+            semanticErrors++;
+            return;
+        }
+        System.out.println("start: " + ctx.expression(1).stop.toString());
+        //if(ctx.expression(1).start)
 
     }
 
