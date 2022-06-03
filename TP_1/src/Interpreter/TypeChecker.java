@@ -3,6 +3,7 @@ import SymbolTable.FunctionSymbol;
 import SymbolTable.Scope;
 import SymbolTable.Symbol;
 
+import SymbolTable.TypeSymbol;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -16,6 +17,7 @@ public class TypeChecker extends a22BaseListener{
     public Scope globalScope;
     public Scope currentScope;
     public FunctionSymbol currentFunction;
+    public TypeSymbol currentTypeSymbol;
     public int semanticErrors;
 
     public boolean hasMain = false;
@@ -23,9 +25,8 @@ public class TypeChecker extends a22BaseListener{
 
 
     public ParseTreeProperty<String> exprType = new ParseTreeProperty<>();
-    public List<ParseTreeProperty<Symbol>> structList = new ArrayList<>();
     public ParseTreeProperty<Scope> scopes = new ParseTreeProperty<>();
-
+    public HashMap<String, TypeSymbol> structsList = new HashMap<>();
 
 
     private boolean defineSymbol(ParserRuleContext ctx, Symbol S){
@@ -107,6 +108,7 @@ public class TypeChecker extends a22BaseListener{
     public void enterStart(a22.StartContext ctx) {
         globalScope = new Scope(null, "GLOBAL");
         currentScope = globalScope;
+
         scopes.put(ctx, currentScope);
         this.semanticErrors = 0;
         Symbol.TypesList.add("int");
@@ -119,7 +121,7 @@ public class TypeChecker extends a22BaseListener{
     @Override
     public void exitStart(a22.StartContext ctx) {
         if(!hasMain){
-            System.out.println("COMPILATION ERROR : a22 file must have a main function.");
+            System.err.println("COMPILATION ERROR : a22 file must have a main function.");
             semanticErrors++;
         }
     }
@@ -128,26 +130,16 @@ public class TypeChecker extends a22BaseListener{
     public void enterFile(a22.FileContext ctx) { }
 
     @Override
-    public void exitFile(a22.FileContext ctx) {
-
-    }
+    public void exitFile(a22.FileContext ctx) {}
 
     @Override
-    public void enterVariable(a22.VariableContext ctx) {
-
-    }
+    public void enterVariable(a22.VariableContext ctx) {}
 
     @Override
-    public void exitVariable(a22.VariableContext ctx) {
-
-    }
-
+    public void exitVariable(a22.VariableContext ctx) {}
     @Override
-    public void enterVariable_declaration(a22.Variable_declarationContext ctx) {
+    public void enterVariable_declaration(a22.Variable_declarationContext ctx) {}
 
-
-
-    }
     @Override
     public void exitVariable_declaration(a22.Variable_declarationContext ctx) {
         List<TerminalNode>  tns = ctx.IDENTIFIER();
@@ -198,31 +190,18 @@ public class TypeChecker extends a22BaseListener{
             }
 
         }
-        System.out.println("scope: " + this.currentScope );
     }
 
     @Override
-    public void enterBrackets(a22.BracketsContext ctx) {
-
-    }
+    public void enterBrackets(a22.BracketsContext ctx) {}
 
     @Override
-    public void exitBrackets(a22.BracketsContext ctx) {
-
-    }
+    public void exitBrackets(a22.BracketsContext ctx) {}
 
     @Override
     public void enterVariable_initialization(a22.Variable_initializationContext ctx) {
         String variableName1 = ctx.assignment().expression(0).getText();
-        String variableName2 = ctx.assignment().expression(1).getText();
-
-
-        String type = "invalid";
-
-        if(ctx.primitive_data_type() != null)
-            type = ctx.primitive_data_type().getText();
-        else
-            type = ctx.IDENTIFIER().getText();
+        String type = ctx.getChild(0).getText();
 
         if(!Symbol.TypesList.contains(type)){
             System.err.println("Type is not declared: "
@@ -239,27 +218,20 @@ public class TypeChecker extends a22BaseListener{
         }
         defineSymbol(ctx, new Symbol(ctx.assignment().expression(0).start, type));
         exprType.put(ctx, type);
-        System.out.println("scope: " + this.currentScope );
     }
 
     @Override
-    public void exitVariable_initialization(a22.Variable_initializationContext ctx) {
-
-    }
+    public void exitVariable_initialization(a22.Variable_initializationContext ctx) {}
 
     @Override
-    public void enterPrimitive_data_type(a22.Primitive_data_typeContext ctx) {
-
-    }
+    public void enterPrimitive_data_type(a22.Primitive_data_typeContext ctx) {}
 
     @Override
-    public void exitPrimitive_data_type(a22.Primitive_data_typeContext ctx) {
-
-    }
+    public void exitPrimitive_data_type(a22.Primitive_data_typeContext ctx) {}
 
     @Override
     public void enterComposite_data_type_def(a22.Composite_data_type_defContext ctx) {
-        this.currentScope = new Scope(this.globalScope, "struct type : " + ctx.IDENTIFIER().getText());
+        currentScope = new Scope(this.globalScope, "struct type : " + ctx.IDENTIFIER().getText());
 
         if(Symbol.TypesList.contains(ctx.IDENTIFIER().getText())){
             System.err.println("" +
@@ -269,15 +241,21 @@ public class TypeChecker extends a22BaseListener{
             return;
         }
         Symbol.addType(ctx.IDENTIFIER().getText());
-
-
     }
 
     @Override
     public void exitComposite_data_type_def(a22.Composite_data_type_defContext ctx) {
+        this.currentTypeSymbol = new TypeSymbol(ctx.IDENTIFIER().getSymbol(), ctx.TYPE().getText());
+        List<a22.Variable_declarationContext> atributesList = ctx.variable_declaration();
+        for(a22.Variable_declarationContext newCtx : atributesList){
+            String name = newCtx.getChild(1).getText();
+            Symbol atribute = currentScope.resolve(name);
+            currentTypeSymbol.add_argument(new Symbol(atribute.getToken(), atribute.type));
+        }
 
         this.currentScope = this.globalScope;
-        defineSymbol(ctx, new Symbol(ctx.IDENTIFIER().getSymbol(), ctx.IDENTIFIER().getText() ));
+        this.structsList.put(ctx.IDENTIFIER().getText(), this.currentTypeSymbol);
+        defineSymbol(ctx, new TypeSymbol(ctx.IDENTIFIER().getSymbol() , ctx.TYPE( ).getText()));
     }
 
 
@@ -323,20 +301,15 @@ public class TypeChecker extends a22BaseListener{
 
 
     @Override
-    public void enterIdentifier(a22.IdentifierContext ctx) {
-        //containsVariable(ctx, ctx.IDENTIFIER().getText());
-    }
+    public void enterIdentifier(a22.IdentifierContext ctx) {}
 
     @Override
     public void exitIdentifier(a22.IdentifierContext ctx) {
-
         exprType.put(ctx, "ID");
     }
 
     @Override
-    public void enterFun_call(a22.Fun_callContext ctx) {
-
-    }
+    public void enterFun_call(a22.Fun_callContext ctx) {}
 
     @Override
     public void exitFun_call(a22.Fun_callContext ctx) {
@@ -348,7 +321,6 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitSimple_exp(a22.Simple_expContext ctx) {
-
         exprType.put(ctx, exprType.get(ctx.getChild(0)));
     }
 
@@ -357,7 +329,6 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitPm_exp(a22.Pm_expContext ctx) {
-
         String exp0Type = exprType.get(ctx.expression(0));
         String exp1Type = exprType.get(ctx.expression(1));
         String op = ctx.getChild(1).getText();
@@ -376,7 +347,6 @@ public class TypeChecker extends a22BaseListener{
             exp1Type = s2.type;
 
         }
-
         //cannot process booleans
         if(exp0Type.equals("bool") || exp1Type.equals("bool")){
             printExpErrors(ctx, exp0Type, exp1Type, op);
@@ -401,14 +371,10 @@ public class TypeChecker extends a22BaseListener{
     }
 
     @Override
-    public void enterIndex_exp(a22.Index_expContext ctx) {
-
-    }
+    public void enterIndex_exp(a22.Index_expContext ctx) {}
 
     @Override
-    public void exitIndex_exp(a22.Index_expContext ctx) {
-
-    }
+    public void exitIndex_exp(a22.Index_expContext ctx) {}
 
     @Override
     public void enterParen_exp(a22.Paren_expContext ctx) { }
@@ -420,33 +386,50 @@ public class TypeChecker extends a22BaseListener{
     }
 
     @Override
-    public void enterMember_acc_exp(a22.Member_acc_expContext ctx) {
-
-    }
+    public void enterMember_acc_exp(a22.Member_acc_expContext ctx) {}
 
     @Override
     public void exitMember_acc_exp(a22.Member_acc_expContext ctx) {
-        //ctx.ID()
-        //1 ID +e sempre onome da variavel
-        //verificar se o tipo existe
-        //for percorrer os ids para ver se existem
-        //a.b.c.d
-        //ver se o b existe no a, etc etc
-        String name = ctx.IDENTIFIER(0).getText();
-        String lastType = "invalid";
-        List<TerminalNode> atributes = ctx.IDENTIFIER();
+       String variableName = ctx.IDENTIFIER(0).getText();
+       String variableType = currentScope.resolve(variableName).type;
 
+       TypeSymbol ts = structsList.get(variableType);
+       List<Symbol> typeAtributes = ts.get_arguments();
 
-       for(int i = 1 ; i < atributes.size(); i++){
-           String atributeName = ctx.IDENTIFIER(i).getText();
+       List<TerminalNode> identifiers = ctx.IDENTIFIER();
+       String LastType = "struct";
 
+       for(int i = 1; i < identifiers.size(); i++){
+           String atributeName = identifiers.get(i).getText();
+
+           boolean found = false;
+           for(Symbol originAtribute : typeAtributes){
+                if(originAtribute.lexeme().equals(atributeName)){
+                    found = true;
+                    LastType = originAtribute.type;
+                    break;
+                }
+           }
+           if(!found){
+               System.err.println("No such atribute " + atributeName
+                       + " in the struct "
+                       + variableType
+                       );
+               return;
+           }
+           if(LastType.equals("int")||LastType.equals("bool")
+                   ||LastType.equals("real") ||LastType.equals("string")
+                   ||LastType.equals("void")){
+               exprType.put(ctx, LastType);
+               return;
+           }
+
+           ts = structsList.get(LastType);
+           typeAtributes = ts.get_arguments();
        }
 
-
-        String op = ctx.getChild(1).getText();
-
-        exprType.put(ctx, "lastType");
-        return;
+       exprType.put(ctx, LastType);
+       return;
 
     }
 
@@ -455,7 +438,6 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitLlgg_exp(a22.Llgg_expContext ctx) {
-
         String exp0Type = exprType.get(ctx.expression(0));
         String exp1Type = exprType.get(ctx.expression(1));
         String op = ctx.getChild(1).getText();
@@ -472,7 +454,6 @@ public class TypeChecker extends a22BaseListener{
             Symbol s2 = containsVariable(ctx, name);
             if(s2 == null) return;
             exp1Type = s2.type;
-
         }
 
         //cannot process booleans
@@ -505,7 +486,6 @@ public class TypeChecker extends a22BaseListener{
             return;
         }
 
-
         exprType.put(ctx, exp0Type);
         return;
     }
@@ -520,7 +500,6 @@ public class TypeChecker extends a22BaseListener{
         String op = ctx.getChild(1).getText();
 
         //getting the type of the variable
-        //getting the type of the variable
         if(exp0Type.equals("ID")){
             String name = ctx.expression(0).getText();
             Symbol s1 = containsVariable(ctx, name);
@@ -532,7 +511,6 @@ public class TypeChecker extends a22BaseListener{
             Symbol s2 = containsVariable(ctx, name);
             if(s2 == null) return;
             exp1Type = s2.type;
-
         }
 
         //cannot process booleans
@@ -559,9 +537,7 @@ public class TypeChecker extends a22BaseListener{
     }
 
     @Override
-    public void enterAnd_exp(a22.And_expContext ctx) {
-
-    }
+    public void enterAnd_exp(a22.And_expContext ctx) {}
 
     @Override
     public void exitAnd_exp(a22.And_expContext ctx) {
@@ -583,7 +559,6 @@ public class TypeChecker extends a22BaseListener{
             exp1Type = s2.type;
 
         }
-
         //cannot process booleans
         if(!exp0Type.equals("bool") || !exp1Type.equals("bool")){
             printExpErrors(ctx, exp0Type, exp1Type, op);
@@ -615,7 +590,6 @@ public class TypeChecker extends a22BaseListener{
             Symbol s2 = containsVariable(ctx, name);
             if(s2 == null) return;
             exp1Type = s2.type;
-
         }
 
         //cannot process booleans
@@ -633,9 +607,6 @@ public class TypeChecker extends a22BaseListener{
         String type = ctx.getChild(0).getText();
         String name = ctx.getChild(1).getText();
 
-
-        System.out.println("function name: " + name + " -> " + type);
-
         //check if already exists a function with the same name
         if(this.globalScope.resolve(name) != null){
             System.err.println("" +
@@ -645,7 +616,6 @@ public class TypeChecker extends a22BaseListener{
             return;
         }
 
-
         currentFunction = new FunctionSymbol(ctx.IDENTIFIER(0).getSymbol(), type);
         this.currentScope = new Scope(this.globalScope, name);
         scopes.put(ctx, this.globalScope);
@@ -654,19 +624,17 @@ public class TypeChecker extends a22BaseListener{
     @Override
     public void exitFunction_def(a22.Function_defContext ctx) {
         List<TerminalNode> tns = ctx.IDENTIFIER();
+        String type = ctx.getChild(0).getText();
 
-
-        if(ctx.primitive_data_type() != null){
-            String type = ctx.primitive_data_type().getText();
+        if(ctx.primitive_data_type() != null || ctx.VOID() != null){
             currentFunction = new FunctionSymbol(ctx.IDENTIFIER(0).getSymbol(), type);
         }
         else if(!Symbol.TypesList.contains(ctx.IDENTIFIER(0).getText())){
-            System.err.println("Undefiend type on line " + ctx.IDENTIFIER(0).getSymbol().getLine());
+            System.err.println("Undefiend type " + type +  " on line " + ctx.IDENTIFIER(0).getSymbol().getLine());
             semanticErrors++;
             return;
         }
         else{
-            String type = ctx.IDENTIFIER(0).getText();
             currentFunction = new FunctionSymbol(ctx.IDENTIFIER(1).getSymbol(), type);
         }
 
@@ -681,17 +649,10 @@ public class TypeChecker extends a22BaseListener{
                 break;
             }
         }
-
-
-
-
-
     }
 
     @Override
-    public void enterFunction_def_args(a22.Function_def_argsContext ctx) {
-
-    }
+    public void enterFunction_def_args(a22.Function_def_argsContext ctx) {}
 
     @Override
     public void exitFunction_def_args(a22.Function_def_argsContext ctx) {
@@ -702,20 +663,15 @@ public class TypeChecker extends a22BaseListener{
             String type = exprType.get(listFunctionArgsTypes.get(i));
             String name = listVariableNames.get(i).getText();
             if(currentScope.contains(name)){return;}
-            //System.out.println("NAME: " + name + "  TYPE: " + type);
 
             Symbol s = new Symbol(listVariableNames.get(i).getSymbol(), type);
             currentFunction.add_argument(s);
             defineSymbol(ctx, s);
-            System.out.println("list arguments: " + currentFunction.get_arguments());
         }
-
     }
 
     @Override
-    public void enterFunction_def_args_types(a22.Function_def_args_typesContext ctx) {
-
-    }
+    public void enterFunction_def_args_types(a22.Function_def_args_typesContext ctx) {}
 
     @Override
     public void exitFunction_def_args_types(a22.Function_def_args_typesContext ctx) {
@@ -724,8 +680,6 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void enterNormal_fun_call(a22.Normal_fun_callContext ctx) {
-        System.out.println(" enter normal fun cal");
-
         String functionName = ctx.IDENTIFIER().getText();
         Symbol f =  this.currentScope.resolve(functionName);
 
@@ -750,86 +704,56 @@ public class TypeChecker extends a22BaseListener{
     }
 
     @Override
-    public void exitNormal_fun_call(a22.Normal_fun_callContext ctx) {
-
-        System.out.println(" exit normal fun cal");
-
-    }
+    public void exitNormal_fun_call(a22.Normal_fun_callContext ctx) {}
 
     @Override
-    public void enterWrite_fun_call(a22.Write_fun_callContext ctx) {
-
-    }
+    public void enterWrite_fun_call(a22.Write_fun_callContext ctx) {}
 
     @Override
-    public void exitWrite_fun_call(a22.Write_fun_callContext ctx) {
-
-    }
+    public void exitWrite_fun_call(a22.Write_fun_callContext ctx) {}
 
     @Override
-    public void enterRead_fun_call(a22.Read_fun_callContext ctx) {
-
-    }
+    public void enterRead_fun_call(a22.Read_fun_callContext ctx) {}
 
     @Override
     public void exitRead_fun_call(a22.Read_fun_callContext ctx) {
-
+        if(!currentScope.contains(ctx.IDENTIFIER().getText()))
+            System.err.println("Variable : " + ctx.IDENTIFIER().getText() +" does not exist in line: "
+                    +ctx.IDENTIFIER().getSymbol().getLine());
     }
 
     @Override
-    public void enterFunction_call_args(a22.Function_call_argsContext ctx) {
-
-    }
+    public void enterFunction_call_args(a22.Function_call_argsContext ctx) {}
 
     @Override
-    public void exitFunction_call_args(a22.Function_call_argsContext ctx) {
-
-    }
+    public void exitFunction_call_args(a22.Function_call_argsContext ctx) {}
 
     @Override
-    public void enterAssignment_state(a22.Assignment_stateContext ctx) {
-
-    }
+    public void enterAssignment_state(a22.Assignment_stateContext ctx) {}
 
     @Override
-    public void exitAssignment_state(a22.Assignment_stateContext ctx) {
-        //exprType.get(ctx, exprType.get(ctx.assignment().expression(0).ç));
-    }
+    public void exitAssignment_state(a22.Assignment_stateContext ctx) {}
 
     @Override
-    public void enterConditional_state(a22.Conditional_stateContext ctx) {
-
-    }
+    public void enterConditional_state(a22.Conditional_stateContext ctx) {}
 
     @Override
-    public void exitConditional_state(a22.Conditional_stateContext ctx) {
-
-    }
+    public void exitConditional_state(a22.Conditional_stateContext ctx) {}
 
     @Override
-    public void enterWhile_state(a22.While_stateContext ctx) {
-
-    }
+    public void enterWhile_state(a22.While_stateContext ctx) {}
 
     @Override
-    public void exitWhile_state(a22.While_stateContext ctx) {
-
-    }
+    public void exitWhile_state(a22.While_stateContext ctx) {}
 
     @Override
-    public void enterFor_state(a22.For_stateContext ctx) {
-
-    }
+    public void enterFor_state(a22.For_stateContext ctx) {}
 
     @Override
-    public void exitFor_state(a22.For_stateContext ctx) {
-
-    }
+    public void exitFor_state(a22.For_stateContext ctx) {}
 
     @Override
-    public void enterControl_state(a22.Control_stateContext ctx) {
-
-    }
+    public void enterControl_state(a22.Control_stateContext ctx) {}
 
     @Override
     public void exitControl_state(a22.Control_stateContext ctx) {
@@ -837,39 +761,25 @@ public class TypeChecker extends a22BaseListener{
     }
 
     @Override
-    public void enterExpression_state(a22.Expression_stateContext ctx) {
-
-    }
+    public void enterExpression_state(a22.Expression_stateContext ctx) {}
 
     @Override
-    public void exitExpression_state(a22.Expression_stateContext ctx) {
-
-    }
+    public void exitExpression_state(a22.Expression_stateContext ctx) {}
 
     @Override
-    public void enterBlock_state(a22.Block_stateContext ctx) {
-
-    }
+    public void enterBlock_state(a22.Block_stateContext ctx) {}
 
     @Override
-    public void exitBlock_state(a22.Block_stateContext ctx) {
-
-    }
+    public void exitBlock_state(a22.Block_stateContext ctx) {}
 
     @Override
-    public void enterSemicolon_state(a22.Semicolon_stateContext ctx) {
-
-    }
+    public void enterSemicolon_state(a22.Semicolon_stateContext ctx) {}
 
     @Override
-    public void exitSemicolon_state(a22.Semicolon_stateContext ctx) {
-
-    }
+    public void exitSemicolon_state(a22.Semicolon_stateContext ctx) {}
 
     @Override
-    public void enterAssignment(a22.AssignmentContext ctx) {
-
-    }
+    public void enterAssignment(a22.AssignmentContext ctx) {}
 
     @Override
     public void exitAssignment(a22.AssignmentContext ctx) {
@@ -895,15 +805,13 @@ public class TypeChecker extends a22BaseListener{
                     + exp2Type
                     + " in line " + ctx.getStart().getLine());
             semanticErrors++;
+            return;
         }
-
         exprType.put(ctx, exp1Type);
     }
 
     @Override
-    public void enterConditional(a22.ConditionalContext ctx) {
-
-    }
+    public void enterConditional(a22.ConditionalContext ctx) {}
 
     @Override
     public void exitConditional(a22.ConditionalContext ctx) {
@@ -913,14 +821,13 @@ public class TypeChecker extends a22BaseListener{
                     "Only permited boolean expressions : "
                     + "expressionType : " + expressionType + " in line " + ctx.expression().start.getLine()
             );
+            return;
         }
         exprType.put(ctx, expressionType);
     }
 
     @Override
-    public void enterWhile_loop(a22.While_loopContext ctx) {
-        inLoop = true;
-    }
+    public void enterWhile_loop(a22.While_loopContext ctx) {inLoop = true;}
 
     @Override
     public void exitWhile_loop(a22.While_loopContext ctx) {
@@ -931,34 +838,27 @@ public class TypeChecker extends a22BaseListener{
                     "Only permited boolean expressions : "
                             + "expressionType : " + expressionType + " in line " + ctx.expression().start.getLine()
             );
+            return;
         }
         exprType.put(ctx, expressionType);
     }
 
     @Override
-    public void enterFor_loop(a22.For_loopContext ctx) {
-        inLoop = true;
-    }
+    public void enterFor_loop(a22.For_loopContext ctx) {inLoop = true;}
 
     @Override
-    public void exitFor_loop(a22.For_loopContext ctx) {
-        inLoop = false;
-    }
+    public void exitFor_loop(a22.For_loopContext ctx) {inLoop = false;}
 
     @Override
-    public void enterControl(a22.ControlContext ctx) {
-
-    }
+    public void enterControl(a22.ControlContext ctx) {}
 
     @Override
     public void exitControl(a22.ControlContext ctx) {
-        System.out.println("exitControl: " );
         String fType = this.currentFunction.type;
         String rType = exprType.get(ctx.expression());
-        System.out.println("fType: " + fType);
-        System.out.println("rType: " + rType);
 
-        //fType = real && rType = int
+        if(rType == null){rType = "void";}
+
         if(Symbol.isConvertibleTo(rType, fType)){
             exprType.put(ctx, fType);
         }
@@ -970,39 +870,23 @@ public class TypeChecker extends a22BaseListener{
                     + " in line " + ctx.getStart().getLine());
             semanticErrors++;
         }
-        else{
-            exprType.put(ctx, fType);
-        }
+        else{exprType.put(ctx, fType);}
 
     }
-
     @Override
     public void enterBlock_statement(a22.Block_statementContext ctx) {
-
+        currentScope = new Scope(currentScope);
     }
-
     @Override
     public void exitBlock_statement(a22.Block_statementContext ctx) {
-
+        currentScope = currentScope.getEnclosingScope();
     }
-
     @Override
-    public void visitTerminal(TerminalNode terminalNode) {
-
-    }
-
+    public void visitTerminal(TerminalNode terminalNode) {}
     @Override
-    public void visitErrorNode(ErrorNode errorNode) {
-
-    }
-
+    public void visitErrorNode(ErrorNode errorNode) {}
     @Override
-    public void enterEveryRule(ParserRuleContext parserRuleContext) {
-
-    }
-
+    public void enterEveryRule(ParserRuleContext parserRuleContext) {}
     @Override
-    public void exitEveryRule(ParserRuleContext parserRuleContext) {
-
-    }
+    public void exitEveryRule(ParserRuleContext parserRuleContext) {}
 }

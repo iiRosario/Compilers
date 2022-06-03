@@ -1,0 +1,18 @@
+type point{
+    int x;
+    bool y;
+}
+
+type triangle{
+    point x;
+    point y;
+    point z;
+}
+
+
+int main(){
+    casdkoask ola = 1;
+    triangle t1;
+    bool z = t1.x.y;
+    return 0;
+}

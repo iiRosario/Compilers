@@ -8,17 +8,14 @@ import Interpreter.a22Lexer;
 import Interpreter.a22;
 import Interpreter.TypeChecker;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 
 
 public class Main {
     public static void main(String[] args) {
-        String sourceFile;
-        String outputFile;
         try {
-            a22Lexer lexer = new a22Lexer(CharStreams.fromFileName("input.txt"));
+            //modify args[0] if needed
+            a22Lexer lexer = new a22Lexer(CharStreams.fromFileName(args[0]));
             a22 parser = new a22(new CommonTokenStream(lexer));
             ParseTree tree = parser.start();
             System.out.println("syntatic parsing finished");
@@ -30,16 +27,12 @@ public class Main {
             System.out.println("Type checking...");
             walker.walk(listener, tree);
 
-            if(listener.semanticErrors > 0)
-            {
+            if(listener.semanticErrors > 0) {
                 System.out.println(listener.semanticErrors + " semantic errors found. Compilation process halted.");
                 System.exit(1);
             }
 
             System.out.println("No semantic errors found");
-
-            System.out.println("Generating TAC code");
-
         }
         catch(IOException e){
             e.printStackTrace();
