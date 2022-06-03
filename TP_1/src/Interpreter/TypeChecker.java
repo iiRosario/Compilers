@@ -358,21 +358,23 @@ public class TypeChecker extends a22BaseListener{
     @Override
     public void exitPm_exp(a22.Pm_expContext ctx) {
 
-        String exp0Type = exprType.get(ctx.expression(0).getChild(0));
-        String exp1Type = exprType.get(ctx.expression(1).getChild(0));
+        String exp0Type = exprType.get(ctx.expression(0));
+        String exp1Type = exprType.get(ctx.expression(1));
         String op = ctx.getChild(1).getText();
 
-        System.out.println("pm : " + exp0Type +  "    " + exp1Type);
         //getting the type of the variable
-        if(exp0Type.equals("string")){
-            Symbol s1 = containsVariable(ctx, exp0Type);
+        if(exp0Type.equals("ID")){
+            String name = ctx.expression(0).getText();
+            Symbol s1 = containsVariable(ctx, name);
             if(s1 == null) return;
             exp0Type = s1.type;
         }
-        if(exp1Type.equals("string")){
-            Symbol s2 = containsVariable(ctx, exp1Type);
+        if(exp1Type.equals("ID")){
+            String name = ctx.expression(1).getText();
+            Symbol s2 = containsVariable(ctx, name);
             if(s2 == null) return;
             exp1Type = s2.type;
+
         }
 
         //cannot process booleans
@@ -382,9 +384,6 @@ public class TypeChecker extends a22BaseListener{
         }
 
         if((exp0Type.equals("int") && exp1Type.equals("real")) || (exp0Type.equals("real") && exp1Type.equals("int"))){
-            System.out.println("ENCTREI");
-            System.out.println("exp0: " + exp0Type);
-            System.out.println("exp1: " + exp1Type);
             exprType.put(ctx, "real");
         }
         else{
@@ -457,20 +456,23 @@ public class TypeChecker extends a22BaseListener{
     @Override
     public void exitLlgg_exp(a22.Llgg_expContext ctx) {
 
-        String exp0Type = exprType.get(ctx.expression(0).getChild(0));
-        String exp1Type = exprType.get(ctx.expression(1).getChild(0));
+        String exp0Type = exprType.get(ctx.expression(0));
+        String exp1Type = exprType.get(ctx.expression(1));
         String op = ctx.getChild(1).getText();
 
         //getting the type of the variable
-        if(exp0Type.equals("string")){
-            Symbol s1 = containsVariable(ctx, exp0Type);
+        if(exp0Type.equals("ID")){
+            String name = ctx.expression(0).getText();
+            Symbol s1 = containsVariable(ctx, name);
             if(s1 == null) return;
             exp0Type = s1.type;
         }
-        if(exp1Type.equals("string")){
-            Symbol s2 = containsVariable(ctx, exp1Type);
+        if(exp1Type.equals("ID")){
+            String name = ctx.expression(1).getText();
+            Symbol s2 = containsVariable(ctx, name);
             if(s2 == null) return;
             exp1Type = s2.type;
+
         }
 
         //cannot process booleans
@@ -479,7 +481,6 @@ public class TypeChecker extends a22BaseListener{
             return;
         }
         exprType.put(ctx, "bool");
-        return;
     }
 
     @Override
@@ -491,8 +492,9 @@ public class TypeChecker extends a22BaseListener{
         String op = ctx.getChild(1).getText();
 
         //getting the type of the variable
-        if(exp0Type.equals("string")){
-            Symbol s1 = containsVariable(ctx, exp0Type);
+        if(exp0Type.equals("ID")){
+            String name = ctx.expression().getText();
+            Symbol s1 = containsVariable(ctx, name);
             if(s1 == null) return;
             exp0Type = s1.type;
         }
@@ -518,15 +520,19 @@ public class TypeChecker extends a22BaseListener{
         String op = ctx.getChild(1).getText();
 
         //getting the type of the variable
-        if(exp0Type.equals("string")){
-            Symbol s1 = containsVariable(ctx, exp0Type);
+        //getting the type of the variable
+        if(exp0Type.equals("ID")){
+            String name = ctx.expression(0).getText();
+            Symbol s1 = containsVariable(ctx, name);
             if(s1 == null) return;
             exp0Type = s1.type;
         }
-        if(exp1Type.equals("string")){
-            Symbol s2 = containsVariable(ctx, exp1Type);
+        if(exp1Type.equals("ID")){
+            String name = ctx.expression(1).getText();
+            Symbol s2 = containsVariable(ctx, name);
             if(s2 == null) return;
             exp1Type = s2.type;
+
         }
 
         //cannot process booleans
@@ -563,19 +569,19 @@ public class TypeChecker extends a22BaseListener{
         String exp1Type = exprType.get(ctx.expression(1));
         String op = ctx.getChild(1).getText();
 
-        System.out.println("variable1 : " + exp0Type);
-        System.out.println("variable2 : " + exp1Type);
-
         //getting the type of the variable
-        if(exp0Type.equals("string")){
-            Symbol s1 = containsVariable(ctx, exp0Type);
+        if(exp0Type.equals("ID")){
+            String name = ctx.expression(0).getText();
+            Symbol s1 = containsVariable(ctx, name);
             if(s1 == null) return;
             exp0Type = s1.type;
         }
-        if(exp1Type.equals("string")){
-            Symbol s2 = containsVariable(ctx, exp1Type);
+        if(exp1Type.equals("ID")){
+            String name = ctx.expression(1).getText();
+            Symbol s2 = containsVariable(ctx, name);
             if(s2 == null) return;
             exp1Type = s2.type;
+
         }
 
         //cannot process booleans
@@ -597,19 +603,19 @@ public class TypeChecker extends a22BaseListener{
         String exp1Type = exprType.get(ctx.expression(1));
         String op = ctx.getChild(1).getText();
 
-        System.out.println("variable1 : " + exp0Type);
-        System.out.println("variable2 : " + exp1Type);
-
         //getting the type of the variable
-        if(exp0Type.equals("string")){
-            Symbol s1 = containsVariable(ctx, exp0Type);
+        if(exp0Type.equals("ID")){
+            String name = ctx.expression(0).getText();
+            Symbol s1 = containsVariable(ctx, name);
             if(s1 == null) return;
             exp0Type = s1.type;
         }
-        if(exp1Type.equals("string")){
-            Symbol s2 = containsVariable(ctx, exp1Type);
+        if(exp1Type.equals("ID")){
+            String name = ctx.expression(1).getText();
+            Symbol s2 = containsVariable(ctx, name);
             if(s2 == null) return;
             exp1Type = s2.type;
+
         }
 
         //cannot process booleans
@@ -619,7 +625,6 @@ public class TypeChecker extends a22BaseListener{
         }
 
         exprType.put(ctx, exp0Type);
-        return;
     }
 
     @Override
@@ -629,7 +634,7 @@ public class TypeChecker extends a22BaseListener{
         String name = ctx.getChild(1).getText();
 
 
-        System.out.println("name: " + name + " type : " + type);
+        System.out.println("function name: " + name + " -> " + type);
 
         //check if already exists a function with the same name
         if(this.globalScope.resolve(name) != null){
@@ -690,6 +695,20 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitFunction_def_args(a22.Function_def_argsContext ctx) {
+        List<a22.Function_def_args_typesContext> listFunctionArgsTypes = ctx.function_def_args_types();
+        List<TerminalNode> listVariableNames = ctx.IDENTIFIER();
+
+        for(int i = 0; i < listVariableNames.size(); i++){
+            String type = exprType.get(listFunctionArgsTypes.get(i));
+            String name = listVariableNames.get(i).getText();
+            if(currentScope.contains(name)){return;}
+            //System.out.println("NAME: " + name + "  TYPE: " + type);
+
+            Symbol s = new Symbol(listVariableNames.get(i).getSymbol(), type);
+            currentFunction.add_argument(s);
+            defineSymbol(ctx, s);
+            System.out.println("list arguments: " + currentFunction.get_arguments());
+        }
 
     }
 
@@ -700,7 +719,7 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitFunction_def_args_types(a22.Function_def_args_typesContext ctx) {
-
+        exprType.put(ctx, ctx.getChild(0).getText() );
     }
 
     @Override
@@ -888,7 +907,14 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitConditional(a22.ConditionalContext ctx) {
-
+        String expressionType = exprType.get(ctx.expression());
+        if(!expressionType.equals("bool")){
+            System.err.println(
+                    "Only permited boolean expressions : "
+                    + "expressionType : " + expressionType + " in line " + ctx.expression().start.getLine()
+            );
+        }
+        exprType.put(ctx, expressionType);
     }
 
     @Override
@@ -899,6 +925,14 @@ public class TypeChecker extends a22BaseListener{
     @Override
     public void exitWhile_loop(a22.While_loopContext ctx) {
         inLoop = false;
+        String expressionType = exprType.get(ctx.expression());
+        if(!expressionType.equals("bool")){
+            System.err.println(
+                    "Only permited boolean expressions : "
+                            + "expressionType : " + expressionType + " in line " + ctx.expression().start.getLine()
+            );
+        }
+        exprType.put(ctx, expressionType);
     }
 
     @Override
@@ -921,7 +955,8 @@ public class TypeChecker extends a22BaseListener{
         System.out.println("exitControl: " );
         String fType = this.currentFunction.type;
         String rType = exprType.get(ctx.expression());
-
+        System.out.println("fType: " + fType);
+        System.out.println("rType: " + rType);
 
         //fType = real && rType = int
         if(Symbol.isConvertibleTo(rType, fType)){

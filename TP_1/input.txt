@@ -1,3 +1,9 @@
-real cona(){
-    return 1 + 1.2 + 1;
+type point{
+    int x;
+    int y;
+}
+
+
+point cona(int y){
+    return x * y * 1.3;
 }
