@@ -360,8 +360,6 @@ public class TypeChecker extends a22BaseListener{
 
         String exp0Type = exprType.get(ctx.expression(0).getChild(0));
         String exp1Type = exprType.get(ctx.expression(1).getChild(0));
-        System.out.println("exp0: " + exp0Type);
-        System.out.println("exp1: " + exp1Type);
         String op = ctx.getChild(1).getText();
 
         System.out.println("pm : " + exp0Type +  "    " + exp1Type);
@@ -385,6 +383,8 @@ public class TypeChecker extends a22BaseListener{
 
         if((exp0Type.equals("int") && exp1Type.equals("real")) || (exp0Type.equals("real") && exp1Type.equals("int"))){
             System.out.println("ENCTREI");
+            System.out.println("exp0: " + exp0Type);
+            System.out.println("exp1: " + exp1Type);
             exprType.put(ctx, "real");
         }
         else{
