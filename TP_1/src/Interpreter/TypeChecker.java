@@ -46,6 +46,63 @@ public class TypeChecker extends a22BaseListener{
         this.semanticErrors++;
         return false;
     }
+
+
+
+    private Symbol containsVariable(ParserRuleContext ctx, String variableName){
+
+        if(variableName.isEmpty()) return null;
+
+        Symbol s = currentScope.resolve(variableName);
+        if(s == null){
+            System.err.println("Define variable: "
+                    + variableName
+                    + " in line " + ctx.getStart().getLine());
+            semanticErrors++;
+
+            return null;
+        }
+        return s;
+    }
+
+
+    public void printExpErrors(ParserRuleContext ctx, String v1, String op){
+        System.err.println("" +
+                "Cannot do the operation : "
+                + op
+                + v1
+                + " in line " + ctx.getStart().getLine());
+        semanticErrors++;
+    }
+
+    public void printExpErrors(ParserRuleContext ctx, String v1, String v2, String op){
+        if(v2 == null) {
+            System.err.println("" +
+                    "Cannot do the operation : "
+                    + op
+                    + v1
+                    + " in line " + ctx.getStart().getLine());
+        }
+        else{
+            System.err.println("" +
+                    "Cannot do the operation : "
+                    + v1
+                    + " " + op +  " "
+                    + v2
+                    + " in line " + ctx.getStart().getLine());
+        }
+        semanticErrors++;
+    }
+
+
+
+
+
+    //================================================ START ========================================
+
+
+
+
     @Override
     public void enterStart(a22.StartContext ctx) {
         globalScope = new Scope(null, "GLOBAL");
@@ -57,8 +114,6 @@ public class TypeChecker extends a22BaseListener{
         Symbol.TypesList.add("string");
         Symbol.TypesList.add("bool");
         Symbol.TypesList.add("void");
-
-
     }
 
     @Override
@@ -110,6 +165,7 @@ public class TypeChecker extends a22BaseListener{
                 };
 
                 defineSymbol(ctx, symbol);
+                exprType.put(ctx, symbol.type);
             }
 
         }catch (NullPointerException e) {           // Non primitive type
@@ -138,7 +194,7 @@ public class TypeChecker extends a22BaseListener{
                     semanticErrors++;
                 }
                 defineSymbol(ctx, new Symbol(t.getSymbol(), type));
-
+                exprType.put(ctx, type);
             }
 
         }
@@ -159,12 +215,10 @@ public class TypeChecker extends a22BaseListener{
     public void enterVariable_initialization(a22.Variable_initializationContext ctx) {
         String variableName1 = ctx.assignment().expression(0).getText();
         String variableName2 = ctx.assignment().expression(1).getText();
-        System.out.println("variable 2: " + variableName2);
-
-        System.out.println("identifier: " + variableName1);
 
 
         String type = "invalid";
+
         if(ctx.primitive_data_type() != null)
             type = ctx.primitive_data_type().getText();
         else
@@ -184,6 +238,7 @@ public class TypeChecker extends a22BaseListener{
             semanticErrors++;
         }
         defineSymbol(ctx, new Symbol(ctx.assignment().expression(0).start, type));
+        exprType.put(ctx, type);
         System.out.println("scope: " + this.currentScope );
     }
 
@@ -269,12 +324,13 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void enterIdentifier(a22.IdentifierContext ctx) {
-
+        //containsVariable(ctx, ctx.IDENTIFIER().getText());
     }
 
     @Override
     public void exitIdentifier(a22.IdentifierContext ctx) {
-        exprType.put(ctx, "string");
+
+        exprType.put(ctx, "ID");
     }
 
     @Override
@@ -284,7 +340,7 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitFun_call(a22.Fun_callContext ctx) {
-
+        exprType.put(ctx, ctx.getChild(0).getText());
     }
 
     @Override
@@ -292,28 +348,57 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitSimple_exp(a22.Simple_expContext ctx) {
+
         exprType.put(ctx, exprType.get(ctx.getChild(0)));
     }
 
     @Override
-    public void enterPm_exp(a22.Pm_expContext ctx) {
-
-    }
+    public void enterPm_exp(a22.Pm_expContext ctx) { }
 
     @Override
     public void exitPm_exp(a22.Pm_expContext ctx) {
-        System.out.println("pm1: " + exprType.get(ctx.expression(0)));
-        exprType.get(ctx.expression(0));
+
+        String exp0Type = exprType.get(ctx.expression(0).getChild(0));
+        String exp1Type = exprType.get(ctx.expression(1).getChild(0));
+        System.out.println("exp0: " + exp0Type);
+        System.out.println("exp1: " + exp1Type);
+        String op = ctx.getChild(1).getText();
+
+        System.out.println("pm : " + exp0Type +  "    " + exp1Type);
+        //getting the type of the variable
+        if(exp0Type.equals("string")){
+            Symbol s1 = containsVariable(ctx, exp0Type);
+            if(s1 == null) return;
+            exp0Type = s1.type;
+        }
+        if(exp1Type.equals("string")){
+            Symbol s2 = containsVariable(ctx, exp1Type);
+            if(s2 == null) return;
+            exp1Type = s2.type;
+        }
+
+        //cannot process booleans
+        if(exp0Type.equals("bool") || exp1Type.equals("bool")){
+            printExpErrors(ctx, exp0Type, exp1Type, op);
+            return;
+        }
+
+        if((exp0Type.equals("int") && exp1Type.equals("real")) || (exp0Type.equals("real") && exp1Type.equals("int"))){
+            System.out.println("ENCTREI");
+            exprType.put(ctx, "real");
+        }
+        else{
+            exprType.put(ctx, exp0Type);
+        }
+
     }
 
     @Override
-    public void enterEqual_exp(a22.Equal_expContext ctx) {
-
-    }
+    public void enterEqual_exp(a22.Equal_expContext ctx) { }
 
     @Override
     public void exitEqual_exp(a22.Equal_expContext ctx) {
-
+        exprType.put(ctx, "bool");
     }
 
     @Override
@@ -327,13 +412,12 @@ public class TypeChecker extends a22BaseListener{
     }
 
     @Override
-    public void enterParen_exp(a22.Paren_expContext ctx) {
-
-    }
+    public void enterParen_exp(a22.Paren_expContext ctx) { }
 
     @Override
     public void exitParen_exp(a22.Paren_expContext ctx) {
-
+        String exp0Type = exprType.get(ctx.expression());
+        exprType.put(ctx, exp0Type);
     }
 
     @Override
@@ -349,36 +433,123 @@ public class TypeChecker extends a22BaseListener{
         //for percorrer os ids para ver se existem
         //a.b.c.d
         //ver se o b existe no a, etc etc
+        String name = ctx.IDENTIFIER(0).getText();
+        String lastType = "invalid";
+        List<TerminalNode> atributes = ctx.IDENTIFIER();
+
+
+       for(int i = 1 ; i < atributes.size(); i++){
+           String atributeName = ctx.IDENTIFIER(i).getText();
+
+       }
+
+
+        String op = ctx.getChild(1).getText();
+
+        exprType.put(ctx, "lastType");
+        return;
+
     }
 
     @Override
-    public void enterLlgg_exp(a22.Llgg_expContext ctx) {
-
-    }
+    public void enterLlgg_exp(a22.Llgg_expContext ctx) { }
 
     @Override
     public void exitLlgg_exp(a22.Llgg_expContext ctx) {
 
+        String exp0Type = exprType.get(ctx.expression(0).getChild(0));
+        String exp1Type = exprType.get(ctx.expression(1).getChild(0));
+        String op = ctx.getChild(1).getText();
+
+        //getting the type of the variable
+        if(exp0Type.equals("string")){
+            Symbol s1 = containsVariable(ctx, exp0Type);
+            if(s1 == null) return;
+            exp0Type = s1.type;
+        }
+        if(exp1Type.equals("string")){
+            Symbol s2 = containsVariable(ctx, exp1Type);
+            if(s2 == null) return;
+            exp1Type = s2.type;
+        }
+
+        //cannot process booleans
+        if(exp0Type.equals("bool") || exp1Type.equals("bool")){
+            printExpErrors(ctx, exp0Type, exp1Type, op);
+            return;
+        }
+        exprType.put(ctx, "bool");
+        return;
     }
 
     @Override
-    public void enterNegation_exp(a22.Negation_expContext ctx) {
-
-    }
+    public void enterNegation_exp(a22.Negation_expContext ctx) { }
 
     @Override
     public void exitNegation_exp(a22.Negation_expContext ctx) {
+        String exp0Type = exprType.get(ctx.expression());
+        String op = ctx.getChild(1).getText();
 
+        //getting the type of the variable
+        if(exp0Type.equals("string")){
+            Symbol s1 = containsVariable(ctx, exp0Type);
+            if(s1 == null) return;
+            exp0Type = s1.type;
+        }
+        //cannot do "-bool" and "not int/real/string"
+        if((op.equals("-") && exp0Type.equals("bool"))
+                || op.equals("not") && !exp0Type.equals("bool")){
+            printExpErrors(ctx, exp0Type, op);
+            return;
+        }
+
+
+        exprType.put(ctx, exp0Type);
+        return;
     }
 
     @Override
-    public void enterMdr_exp(a22.Mdr_expContext ctx) {
-
-    }
+    public void enterMdr_exp(a22.Mdr_expContext ctx) { }
 
     @Override
     public void exitMdr_exp(a22.Mdr_expContext ctx) {
+        String exp0Type = exprType.get(ctx.expression(0));
+        String exp1Type = exprType.get(ctx.expression(1));
+        String op = ctx.getChild(1).getText();
 
+        //getting the type of the variable
+        if(exp0Type.equals("string")){
+            Symbol s1 = containsVariable(ctx, exp0Type);
+            if(s1 == null) return;
+            exp0Type = s1.type;
+        }
+        if(exp1Type.equals("string")){
+            Symbol s2 = containsVariable(ctx, exp1Type);
+            if(s2 == null) return;
+            exp1Type = s2.type;
+        }
+
+        //cannot process booleans
+        if(exp0Type.equals("bool") || exp1Type.equals("bool")){
+            printExpErrors(ctx, exp0Type, exp1Type, op);
+            return;
+        }
+
+        //is only permited : int % int
+        if(op.equals("%")){
+            if(!exp0Type.equals("int") || !exp1Type.equals("int")){
+                printExpErrors(ctx, exp0Type, exp1Type, op);
+                return;
+            }
+        }
+
+        if((exp0Type.equals("int") && exp1Type.equals("real")) || exp0Type.equals("real") && exp1Type.equals("int")){
+            exprType.put(ctx, "real");
+            return;
+        }
+
+        exprType.put(ctx, exp0Type);
+        return;
     }
 
     @Override
@@ -388,30 +559,79 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitAnd_exp(a22.And_expContext ctx) {
+        String exp0Type = exprType.get(ctx.expression(0));
+        String exp1Type = exprType.get(ctx.expression(1));
+        String op = ctx.getChild(1).getText();
 
+        System.out.println("variable1 : " + exp0Type);
+        System.out.println("variable2 : " + exp1Type);
+
+        //getting the type of the variable
+        if(exp0Type.equals("string")){
+            Symbol s1 = containsVariable(ctx, exp0Type);
+            if(s1 == null) return;
+            exp0Type = s1.type;
+        }
+        if(exp1Type.equals("string")){
+            Symbol s2 = containsVariable(ctx, exp1Type);
+            if(s2 == null) return;
+            exp1Type = s2.type;
+        }
+
+        //cannot process booleans
+        if(!exp0Type.equals("bool") || !exp1Type.equals("bool")){
+            printExpErrors(ctx, exp0Type, exp1Type, op);
+            return;
+        }
+
+        exprType.put(ctx, exp0Type);
+        return;
     }
 
     @Override
-    public void enterOr_exp(a22.Or_expContext ctx) {
-
-    }
+    public void enterOr_exp(a22.Or_expContext ctx) {}
 
     @Override
     public void exitOr_exp(a22.Or_expContext ctx) {
+        String exp0Type = exprType.get(ctx.expression(0));
+        String exp1Type = exprType.get(ctx.expression(1));
+        String op = ctx.getChild(1).getText();
 
+        System.out.println("variable1 : " + exp0Type);
+        System.out.println("variable2 : " + exp1Type);
+
+        //getting the type of the variable
+        if(exp0Type.equals("string")){
+            Symbol s1 = containsVariable(ctx, exp0Type);
+            if(s1 == null) return;
+            exp0Type = s1.type;
+        }
+        if(exp1Type.equals("string")){
+            Symbol s2 = containsVariable(ctx, exp1Type);
+            if(s2 == null) return;
+            exp1Type = s2.type;
+        }
+
+        //cannot process booleans
+        if(!exp0Type.equals("bool") || !exp1Type.equals("bool")){
+            printExpErrors(ctx, exp0Type, exp1Type, op);
+            return;
+        }
+
+        exprType.put(ctx, exp0Type);
+        return;
     }
 
     @Override
     public void enterFunction_def(a22.Function_defContext ctx) {
         List<TerminalNode> tns = ctx.IDENTIFIER();
-
-        String name = "";
-        if(ctx.primitive_data_type() != null || ctx.VOID() != null)
-            name = ctx.IDENTIFIER(0).getText();
-        else
-            name = ctx.IDENTIFIER(1).getText();
+        String type = ctx.getChild(0).getText();
+        String name = ctx.getChild(1).getText();
 
 
+        System.out.println("name: " + name + " type : " + type);
+
+        //check if already exists a function with the same name
         if(this.globalScope.resolve(name) != null){
             System.err.println("" +
                     "Already defined the name on a Variable or a Function :" + name
@@ -420,12 +640,11 @@ public class TypeChecker extends a22BaseListener{
             return;
         }
 
+
+        currentFunction = new FunctionSymbol(ctx.IDENTIFIER(0).getSymbol(), type);
         this.currentScope = new Scope(this.globalScope, name);
         scopes.put(ctx, this.globalScope);
     }
-
-
-
 
     @Override
     public void exitFunction_def(a22.Function_defContext ctx) {
@@ -457,6 +676,11 @@ public class TypeChecker extends a22BaseListener{
                 break;
             }
         }
+
+
+
+
+
     }
 
     @Override
@@ -590,7 +814,7 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitControl_state(a22.Control_stateContext ctx) {
-
+        exprType.put(ctx, exprType.get(ctx.getChild(0)));
     }
 
     @Override
@@ -625,28 +849,36 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void enterAssignment(a22.AssignmentContext ctx) {
-        String variableName1 = ctx.expression(0).getText();
-        String variableName2 = ctx.expression(1).getText();
-        System.out.println("variable 1: " + variableName1);
-        System.out.println("variable 2: " + variableName2);
-
-        //cheking if the first variable is already defined
-        if(this.currentScope.resolve(variableName1) == null){
-            System.err.println("" +
-                    "Variable: " + variableName1
-                    + "does not exist "
-                    + " in line " + ctx.getStart().getLine());
-            semanticErrors++;
-            return;
-        }
-        System.out.println("start: " + ctx.expression(1).stop.toString());
-        //if(ctx.expression(1).start)
 
     }
 
     @Override
     public void exitAssignment(a22.AssignmentContext ctx) {
+        String variableName1 = ctx.expression(0).getText();
+        String variableName2 = ctx.expression(1).getText();
+        String exp1Type = exprType.get(ctx.expression(0));;
+        String exp2Type = exprType.get(ctx.expression(1));
 
+
+        if(exp1Type.equals("ID") ){
+            Symbol s1 = containsVariable(ctx.expression(0), variableName1);
+            if(s1 != null) exp1Type = s1.type;
+        }
+        if(exp2Type.equals("ID") ){
+            Symbol s2 = containsVariable(ctx.expression(1), variableName2);
+            if(s2 != null) exp2Type = s2.type;
+        }
+
+        if((exp1Type.equals("int") && exp2Type.equals("real")) || (!exp1Type.equals(exp2Type))){
+            System.err.println("Type mismatch: "
+                    + exp1Type
+                    + " != "
+                    + exp2Type
+                    + " in line " + ctx.getStart().getLine());
+            semanticErrors++;
+        }
+
+        exprType.put(ctx, exp1Type);
     }
 
     @Override
@@ -686,6 +918,26 @@ public class TypeChecker extends a22BaseListener{
 
     @Override
     public void exitControl(a22.ControlContext ctx) {
+        System.out.println("exitControl: " );
+        String fType = this.currentFunction.type;
+        String rType = exprType.get(ctx.expression());
+
+
+        //fType = real && rType = int
+        if(Symbol.isConvertibleTo(rType, fType)){
+            exprType.put(ctx, fType);
+        }
+        else if(!fType.equals(rType)){
+            System.err.println("Function type mismatch: "
+                    + fType
+                    + " != "
+                    + rType
+                    + " in line " + ctx.getStart().getLine());
+            semanticErrors++;
+        }
+        else{
+            exprType.put(ctx, fType);
+        }
 
     }
 
